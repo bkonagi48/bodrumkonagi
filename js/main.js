@@ -263,7 +263,6 @@
     stage.innerHTML = R.map(function (rv, i) {
       return '' +
         '<article class="review' + (i === state.review ? " is-active" : "") + '">' +
-          '<div class="review__portrait"><img src="' + rv.avatar + '" alt="' + rv.name + '" loading="lazy"></div>' +
           '<div class="review__body">' +
             '<svg class="review__quote icon"><use href="#i-quote"></use></svg>' +
             '<div class="review__stars">' + stars(rv.rating || 5) + '</div>' +
@@ -273,7 +272,7 @@
         '</article>';
     }).join("");
     if (thumbs) thumbs.innerHTML = R.map(function (rv, i) {
-      return '<button class="review-thumb' + (i === state.review ? " is-active" : "") + '" data-cursor data-idx="' + i + '"><img src="' + rv.avatar + '" alt="' + rv.name + '"></button>';
+      return '<button class="review-thumb' + (i === state.review ? " is-active" : "") + '" data-cursor data-idx="' + i + '" aria-label="Go to slide ' + (i + 1) + '"></button>';
     }).join("");
     var total = $("#revTotal"); if (total) total.textContent = ("0" + R.length).slice(-2);
     updateReviewUI();
