@@ -374,8 +374,8 @@ body.has-cursor .cursor{display:block}
 .review{position:absolute;inset:0;display:block;opacity:0;visibility:hidden;transform:translateY(20px);
   transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .review.is-active{opacity:1;visibility:visible;transform:none;position:relative}
-.review__body{display:flex;flex-direction:column;gap:22px;max-width:920px}
-.review__stars{display:flex;gap:4px;color:var(--bronze-lt)}
+.review__body{display:flex;flex-direction:column;gap:22px;max-width:920px;margin:0 auto;align-items:center;text-align:center}
+.review__stars{display:flex;gap:4px;color:var(--bronze-lt);justify-content:center}
 .review__stars .icon{width:18px;height:18px}
 .review__text{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);line-height:1.5;color:var(--cream);font-weight:400}
 .review__quote{width:40px;height:40px;color:var(--bronze);opacity:.5}
