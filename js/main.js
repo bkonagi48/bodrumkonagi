@@ -52,6 +52,10 @@
       "footer.desc": "A completely renovated boutique konak in the heart of Bodrum city centre. We'll be delighted to welcome you.",
       "footer.explore": "Explore", "footer.contact": "Contact", "footer.follow": "Follow",
       "footer.rights": "All rights reserved.",
+      "instagram.follow": "Follow",
+      "instagram.posts": "posts",
+      "instagram.followers": "followers",
+      "instagram.following": "following",
       "ui.all": "All", "ui.from": "from", "ui.perNight": "/ night", "ui.reserve": "Reserve",
       "ui.guest": "Guest", "ui.guests": "Guests", "ui.anyType": "Any room", "ui.rooms": "rooms",
       "ui.guestsCount": "guests · up to"
@@ -94,6 +98,10 @@
       "footer.desc": "Bodrum şehir merkezinin kalbinde, tamamen yenilenmiş bir butik konak. Sizi ağırlamaktan mutluluk duyarız.",
       "footer.explore": "Keşfet", "footer.contact": "İletişim", "footer.follow": "Takip et",
       "footer.rights": "Tüm hakları saklıdır.",
+      "instagram.follow": "Takip Et",
+      "instagram.posts": "gönderi",
+      "instagram.followers": "takipçi",
+      "instagram.following": "takip",
       "ui.all": "Tümü", "ui.from": "başlangıç", "ui.perNight": "/ gece", "ui.reserve": "Rezervasyon",
       "ui.guest": "Misafir", "ui.guests": "Misafir", "ui.anyType": "Tüm odalar", "ui.rooms": "oda",
       "ui.guestsCount": "misafir · en fazla"
@@ -129,6 +137,7 @@
     renderRooms();
     renderReviews();
     renderRatings();
+    renderInstagram();
     updateActionLinks();
   }
 
@@ -285,6 +294,47 @@
           '</div>' +
         '</div>';
     }).join("");
+  }
+  
+  /* ------------------------------------------------------------- instagram */
+  function renderInstagram() {
+    var insta = DATA.INSTAGRAM; if (!insta) return;
+    var profile = insta.profile;
+    var posts = insta.posts;
+
+    var usernameEl = $(".instagram__username");
+    var bioEl = $("#instaBio");
+    var postsCountEl = $("#instaPostsCount");
+    var followersCountEl = $("#instaFollowersCount");
+    var followingCountEl = $("#instaFollowingCount");
+    var avatarEl = $(".instagram__avatar img");
+
+    if (usernameEl) usernameEl.textContent = profile.username;
+    if (bioEl) bioEl.textContent = L(profile.bio);
+    if (postsCountEl) postsCountEl.textContent = profile.postsCount;
+    if (followersCountEl) followersCountEl.textContent = profile.followersCount;
+    if (followingCountEl) followingCountEl.textContent = profile.followingCount;
+    if (avatarEl) avatarEl.setAttribute("src", profile.avatar);
+
+    var grid = $("#instagramGrid");
+    if (grid) {
+      grid.innerHTML = (posts || []).map(function (post) {
+        var captionText = L(post.caption);
+        return '' +
+          '<a href="' + profile.link + '" target="_blank" rel="noopener" class="instagram__post" data-cursor>' +
+            '<div class="instagram__post-media">' +
+              '<img src="' + post.img + '" alt="' + captionText + '" loading="lazy">' +
+            '</div>' +
+            '<div class="instagram__post-overlay">' +
+              '<div class="instagram__post-stats">' +
+                '<span><svg class="icon icon-heart" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> ' + post.likes + '</span>' +
+                '<span><svg class="icon icon-comment" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg> ' + post.comments + '</span>' +
+              '</div>' +
+              '<p class="instagram__post-caption">' + captionText + '</p>' +
+            '</div>' +
+          '</a>';
+      }).join("");
+    }
   }
 
   /* ----------------------------------------------------------- CTA floats */
@@ -475,6 +525,7 @@
     renderRooms();
     renderReviews();
     renderRatings();
+    renderInstagram();
     renderFloats();
     renderGallery("comfort");
     applyI18n();

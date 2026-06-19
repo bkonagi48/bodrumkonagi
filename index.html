@@ -317,6 +317,52 @@
           <svg class="icon"><use href="#i-pin"></use></svg><span data-i18n="loc.openmap">Open in Google Maps</span>
         </a>
       </div>
+  </section>
+
+  <!-- ============================ INSTAGRAM FEED ============================ -->
+  <section class="instagram section" id="instagram">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow reveal" data-i18n="footer.follow">Follow</span>
+        <h2 class="section-title display reveal">@bodrumkonagi</h2>
+      </div>
+
+      <div class="instagram__wrapper">
+        <!-- Profile Preview Card -->
+        <div class="instagram__profile reveal" data-cursor>
+          <div class="instagram__avatar-container">
+            <div class="instagram__avatar">
+              <img src="assets/logo-mark.svg" alt="Bodrum Konağı" />
+            </div>
+            <div class="instagram__badge"><svg class="icon"><use href="#i-instagram"></use></svg></div>
+          </div>
+          
+          <div class="instagram__profile-info">
+            <div class="instagram__username-row">
+              <h3 class="instagram__username">bodrumkonagi</h3>
+              <a href="https://instagram.com/bodrumkonagi" target="_blank" rel="noopener" class="btn btn--solid instagram__follow-btn" data-cursor>
+                <span data-i18n="instagram.follow">Follow</span>
+              </a>
+            </div>
+            
+            <div class="instagram__stats">
+              <span><strong id="instaPostsCount">124</strong> <span data-i18n="instagram.posts">posts</span></span>
+              <span><strong id="instaFollowersCount">3.8K</strong> <span data-i18n="instagram.followers">followers</span></span>
+              <span><strong id="instaFollowingCount">142</strong> <span data-i18n="instagram.following">following</span></span>
+            </div>
+            
+            <div class="instagram__bio">
+              <h4 class="instagram__fullname">Bodrum Konağı</h4>
+              <p id="instaBio" class="instagram__biotext">Boutique Hotel in the heart of Bodrum Old Town.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Posts Grid -->
+        <div class="instagram__grid reveal" id="instagramGrid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
     </div>
   </section>
 

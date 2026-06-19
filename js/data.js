@@ -229,5 +229,51 @@ window.SITE_DATA = {
     "assets/images/exp-4.jpg",
     "assets/images/exp-5.jpg",
     "assets/images/act-beach.jpg"
-  ]
+  ],
+
+  /* --- INSTAGRAM: profile preview & feed content --------------------------- */
+  INSTAGRAM: {
+    profile: {
+      username: "bodrumkonagi",
+      fullName: "Bodrum Konağı",
+      link: "https://instagram.com/bodrumkonagi",
+      avatar: "assets/logo-mark.svg",
+      postsCount: 124,
+      followersCount: "3.8K",
+      followingCount: 142,
+      bio: {
+        en: "Boutique Hotel in the heart of Bodrum Old Town. Whitewashed walls, quiet courtyard, steps from the marina. 🌿✨",
+        tr: "Bodrum Eski Şehir'in kalbinde Butik Otel. Bembeyaz duvarlar, sessiz avlu, marinaya birkaç adım. 🌿✨"
+      }
+    },
+    posts: [
+      {
+        img: "assets/images/exp-1.jpg",
+        likes: 142,
+        comments: 12,
+        caption: {
+          en: "Peaceful mornings in our quiet stone courtyard. ☕️🌸 #bodrumkonagi #boutiquehotel",
+          tr: "Sessiz taş avlumuzda huzurlu sabahlar. ☕️🌸 #bodrumkonagi #butikotel"
+        }
+      },
+      {
+        img: "assets/images/act-breakfast.jpg",
+        likes: 218,
+        comments: 18,
+        caption: {
+          en: "A proper Aegean spread to start your day. Everything fresh and local. 🍇🧀",
+          tr: "Güne başlamak için gerçek bir Ege kahvaltısı. Her şey taze ve yerel. 🍇🧀"
+        }
+      },
+      {
+        img: "assets/images/act-beach.jpg",
+        likes: 189,
+        comments: 15,
+        caption: {
+          en: "Under the Aegean sun, just minutes away from our door. ☀️🌊",
+          tr: "Ege güneşinin altında, kapımızdan sadece dakikalar uzaklıkta. ☀️🌊"
+        }
+      }
+    ]
+  }
 };
