@@ -215,9 +215,6 @@
     wrap.innerHTML = rooms.map(function (r, i) {
       var n = ("0" + (i + 1)).slice(-2);
       var amen = (r.amenities || []).slice(0, 6).map(function (k) { return AMEN_ICON[k] ? icon(AMEN_ICON[k]) : ""; }).join("");
-      var resMsg = (state.lang === "tr"
-        ? "Merhaba! Bodrum Konağı'nda \"" + L(r.name) + "\" için müsaitlik öğrenmek istiyorum."
-        : "Hello! I'd like to check availability for the \"" + L(r.name) + "\" at Bodrum Konağı.");
 
       var sliderHTML = "";
       if (r.images && r.images.length > 1) {
@@ -225,6 +222,18 @@
           '<button class="room-slider__btn room-slider__btn--prev" data-dir="-1" aria-label="Previous Image">' + icon("i-arrow-left") + '</button>' +
           '<button class="room-slider__btn room-slider__btn--next" data-dir="1" aria-label="Next Image">' + icon("i-arrow-right") + '</button>' +
           '<div class="room-slider__counter">1 / ' + r.images.length + '</div>';
+      }
+
+      var nightsOptions = "";
+      for (var nt = 1; nt <= 14; nt++) {
+        var ntLabel = nt + " " + (state.lang === "tr" ? "Gece" : (nt === 1 ? "Night" : "Nights"));
+        nightsOptions += '<option value="' + nt + '">' + ntLabel + '</option>';
+      }
+
+      var guestsOptions = "";
+      for (var gst = 1; gst <= r.capacity; gst++) {
+        var gstLabel = gst + " " + (gst === 1 ? t("ui.guest") : t("ui.guests"));
+        guestsOptions += '<option value="' + gst + '">' + gstLabel + '</option>';
       }
 
       return '' +
@@ -244,15 +253,104 @@
             '</div>' +
             '<p class="room-row__desc">' + L(r.desc) + '</p>' +
             '<div class="room-row__amen">' + amen + '</div>' +
+            '<form class="room-booking glass" data-room-id="' + r.id + '">' +
+              '<div class="room-booking__field">' +
+                '<label for="room-in-' + r.id + '">' + t("book.checkin") + '</label>' +
+                '<input type="date" id="room-in-' + r.id + '" class="room-booking__in" name="checkin" data-cursor required>' +
+              '</div>' +
+              '<div class="room-booking__field">' +
+                '<label for="room-nights-' + r.id + '">' + (state.lang === "tr" ? "Gece" : "Nights") + '</label>' +
+                '<div class="select">' +
+                  '<select id="room-nights-' + r.id + '" class="room-booking__nights" name="nights" data-cursor>' +
+                    nightsOptions +
+                  '</select>' +
+                  '<svg class="icon"><use href="#i-chevron-down"></use></svg>' +
+                '</div>' +
+              '</div>' +
+              '<div class="room-booking__field">' +
+                '<label for="room-guests-' + r.id + '">' + t("book.guests") + '</label>' +
+                '<div class="select">' +
+                  '<select id="room-guests-' + r.id + '" class="room-booking__guests" name="guests" data-cursor>' +
+                    guestsOptions +
+                  '</select>' +
+                  '<svg class="icon"><use href="#i-chevron-down"></use></svg>' +
+                '</div>' +
+              '</div>' +
+              '<button type="submit" class="room-booking__btn" data-cursor>' +
+                '<span>' + t("book.cta") + '</span>' +
+                icon("i-arrow-right") +
+              '</button>' +
+            '</form>' +
             '<div class="room-row__foot">' +
-              '<span class="room-row__price"><small>' + t("ui.from") + '</small><b>' + money(r.priceFrom) + '</b><small>' + t("ui.perNight") + '</small></span>' +
-              '<a class="btn btn--outline-light" data-cursor target="_blank" rel="noopener" href="' + waLink(resMsg) + '">' + t("ui.reserve") + icon("i-arrow-right") + '</a>' +
               '<span class="room-row__count">' + r.count + ' ' + t("ui.rooms") + '</span>' +
             '</div>' +
           '</div>' +
         '</article>';
     }).join("");
     observeReveals(wrap);
+    initRoomBookingForms();
+  }
+
+  function initRoomBookingForms() {
+    var today = new Date();
+    var yyyy = today.getFullYear();
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var dd = String(today.getDate()).padStart(2, '0');
+    var todayStr = yyyy + '-' + mm + '-' + dd;
+
+    var tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var tomYyyy = tomorrow.getFullYear();
+    var tomMm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+    var tomDd = String(tomorrow.getDate()).padStart(2, '0');
+    var tomorrowStr = tomYyyy + '-' + tomMm + '-' + tomDd;
+
+    $$(".room-booking").forEach(function (form) {
+      var dateInput = form.querySelector(".room-booking__in");
+      if (dateInput) {
+        dateInput.setAttribute("min", todayStr);
+        dateInput.value = tomorrowStr;
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var roomId = form.getAttribute("data-room-id");
+        var room = (DATA.ROOMS || []).find(function (rm) { return rm.id === roomId; });
+        if (!room) return;
+
+        var ci = dateInput ? dateInput.value : "";
+        var nights = form.querySelector(".room-booking__nights").value;
+        var guests = form.querySelector(".room-booking__guests").value;
+
+        var co = "";
+        if (ci) {
+          var ciDate = new Date(ci);
+          ciDate.setDate(ciDate.getDate() + parseInt(nights, 10));
+          var coYyyy = ciDate.getFullYear();
+          var coMm = String(ciDate.getMonth() + 1).padStart(2, '0');
+          var coDd = String(ciDate.getDate()).padStart(2, '0');
+          co = coYyyy + '-' + coMm + '-' + coDd;
+        }
+
+        var msg;
+        var roomName = L(room.name);
+        if (state.lang === "tr") {
+          msg = "Merhaba! Bodrum Konağı'nda \"" + roomName + "\" odası için rezervasyon talebinde bulunmak istiyorum.";
+          if (ci) msg += "\nGiriş Tarihi: " + ci;
+          if (nights) msg += "\nKonaklama Süresi: " + nights + " Gece";
+          if (co) msg += "\nÇıkış Tarihi: " + co;
+          if (guests) msg += "\nMisafir Sayısı: " + guests;
+        } else {
+          msg = "Hello! I'd like to request a reservation for the \"" + roomName + "\" room at Bodrum Konağı.";
+          if (ci) msg += "\nCheck-in: " + ci;
+          if (nights) msg += "\nDuration: " + nights + " Nights";
+          if (co) msg += "\nCheck-out: " + co;
+          if (guests) msg += "\nGuests: " + guests;
+        }
+
+        window.open(waLink(msg), "_blank", "noopener");
+      });
+    });
   }
 
   /* --------------------------------------------------------------- reviews */

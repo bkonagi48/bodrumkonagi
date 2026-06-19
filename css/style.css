@@ -721,3 +721,98 @@ body.has-cursor .cursor{display:block}
   .cta__float.f1,.cta__float.f4{display:block;opacity:.28}
   .to-top{right:16px;bottom:16px}
 }
+
+/* Room Booking Form inside Cards */
+.room-booking {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 12px;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 18px;
+  align-items: end;
+}
+.room-booking__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+.room-booking__field label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+.room-booking__field input,
+.room-booking__field select {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  width: 100%;
+  outline: none;
+  padding-bottom: 6px;
+  height: 32px;
+  transition: border-color 0.3s;
+}
+.room-booking__field input:focus,
+.room-booking__field select:focus {
+  border-bottom-color: var(--bronze-lt);
+}
+.room-booking__field input[type="date"] {
+  color-scheme: dark;
+}
+.room-booking__field select option {
+  color: #1a1a1a;
+  background-color: #fff;
+}
+.room-booking__btn {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--bronze);
+  color: #fff;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  border: none;
+  margin-top: 4px;
+  width: 100%;
+}
+.room-booking__btn:hover {
+  background: var(--sun);
+}
+.room-booking__btn .icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s var(--ease);
+}
+.room-booking__btn:hover .icon {
+  transform: translateX(4px);
+}
+
+/* Responsiveness for Room Booking */
+@media (max-width: 600px) {
+  .room-booking {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 14px;
+  }
+  .room-booking__field input,
+  .room-booking__field select {
+    height: 36px;
+    padding-bottom: 4px;
+  }
+}
+
