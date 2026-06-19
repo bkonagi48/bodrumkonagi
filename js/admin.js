@@ -236,8 +236,6 @@
       });
   }
 
-  }
-
   /* ------------------------------------------------------------- Image Manager */
   function renderImageManager() {
     var grid = $("#imageGrid");
