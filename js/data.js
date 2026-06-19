@@ -204,16 +204,16 @@ window.SITE_DATA = {
       "id": "senior-suite",
       "type": "Senior Suite",
       "name": {
-        "en": "Senior Suite",
-        "tr": "Senior Suite"
+        "en": "Comfort Double Suite",
+        "tr": "Comfort Double Suite"
       },
       "view": {
-        "en": "Garden View",
-        "tr": "Bahçe Manzaralı"
+        "tr": "Bahçe Manzaralı",
+        "en": "Garden View"
       },
       "floor": {
-        "en": "Garden Floor",
-        "tr": "Bahçe Katı"
+        "tr": "Bahçe Katı",
+        "en": "Garden Floor"
       },
       "desc": {
         "en": "Our spacious senior suite with elegant decor and direct garden access.",
@@ -222,8 +222,8 @@ window.SITE_DATA = {
       "sizeM2": 40,
       "capacity": 3,
       "beds": {
-        "en": "1 king-size bed + lounge",
-        "tr": "1 king-size yatak + oturma alanı"
+        "tr": "1 king-size yatak + oturma alanı",
+        "en": "1 king-size bed + lounge"
       },
       "priceFrom": 8000,
       "currency": "TRY",
