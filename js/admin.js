@@ -7,7 +7,6 @@
 
   var state = {
     rooms: [],
-    currentToken: "",
     currentRoomId: null,
     tempImages: []
   };
@@ -18,10 +17,8 @@
   /* ------------------------------------------------------------- Auth check */
   function checkAuth() {
     var savedPass = localStorage.getItem("bk_admin_password");
-    var savedToken = localStorage.getItem("bk_github_token");
 
-    if (savedPass === DEFAULT_PASS && savedToken) {
-      state.currentToken = savedToken;
+    if (savedPass === DEFAULT_PASS) {
       $("#loginOverlay").classList.add("is-hidden");
       initDashboard();
     }
@@ -29,21 +26,13 @@
 
   function handleLogin() {
     var passwordInput = $("#adminPass").value.trim();
-    var tokenInput = $("#ghToken").value.trim();
 
     if (passwordInput !== DEFAULT_PASS) {
       alert("Hatalı Panel Şifresi! / Incorrect Panel Password!");
       return;
     }
 
-    if (!tokenInput.startsWith("ghp_") && !tokenInput.startsWith("github_pat_")) {
-      alert("Lütfen geçerli bir GitHub Token girin! / Please enter a valid GitHub Token!");
-      return;
-    }
-
     localStorage.setItem("bk_admin_password", passwordInput);
-    localStorage.setItem("bk_github_token", tokenInput);
-    state.currentToken = tokenInput;
 
     $("#loginOverlay").classList.add("is-hidden");
     initDashboard();
@@ -51,7 +40,6 @@
 
   function handleLogout() {
     localStorage.removeItem("bk_admin_password");
-    localStorage.removeItem("bk_github_token");
     location.reload();
   }
 
@@ -216,48 +204,25 @@
     publishBtn.disabled = true;
     publishBtn.textContent = "Publishing...";
 
-    var url = "https://api.github.com/repos/" + REPO_PATH + "/contents/" + FILE_PATH;
-    var headers = {
-      "Authorization": "token " + state.currentToken,
-      "Accept": "application/vnd.github+json"
+    var body = {
+      password: localStorage.getItem("bk_admin_password") || DEFAULT_PASS,
+      data: window.SITE_DATA
     };
 
-    // 1. Get current file data (specifically to get the latest SHA)
-    fetch(url, { headers: headers })
+    fetch("/api/publish", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
       .then(function (res) {
-        if (!res.ok) {
-          throw new Error("GitHub repository or token check failed. (Status: " + res.status + ")");
-        }
-        return res.json();
-      })
-      .then(function (fileData) {
-        var currentSha = fileData.sha;
-
-        // 2. Format new javascript file content
-        var jsContent = "/* ============================================================================\n" +
-          "   BODRUM KONAĞI — CONTENT DATA\n" +
-          "   Generated automatically by Admin Panel.\n" +
-          "   ========================================================================== */\n\n" +
-          "window.SITE_DATA = " + JSON.stringify(window.SITE_DATA, null, 2) + ";\n";
-
-        var body = {
-          message: "chore: update rooms data via admin dashboard",
-          content: utob(jsContent),
-          sha: currentSha
-        };
-
-        // 3. PUT request to update the file
-        return fetch(url, {
-          method: "PUT",
-          headers: headers,
-          body: JSON.stringify(body)
+        return res.json().then(function (data) {
+          if (!res.ok) {
+            throw new Error(data.error || "Publish update failed.");
+          }
+          return data;
         });
-      })
-      .then(function (res) {
-        if (!res.ok) {
-          throw new Error("Publish update failed. (Status: " + res.status + ")");
-        }
-        return res.json();
       })
       .then(function () {
         alert("Başarılı! Değişiklikler kaydedildi. Siteniz 1 dakika içinde güncellenecektir.\n\nSuccess! Changes published. Your site will be updated in ~1 minute.");
@@ -359,29 +324,29 @@
   }
 
   function uploadFileToGitHub(base64Data, fileName, placeholderObj) {
-    var url = "https://api.github.com/repos/" + REPO_PATH + "/contents/assets/images/uploads/" + fileName;
-    var headers = {
-      "Authorization": "token " + state.currentToken,
-      "Accept": "application/vnd.github+json"
-    };
     var body = {
-      message: "media: upload room image via admin dashboard",
-      content: base64Data
+      password: localStorage.getItem("bk_admin_password") || DEFAULT_PASS,
+      base64Data: base64Data,
+      fileName: fileName
     };
 
-    fetch(url, {
-      method: "PUT",
-      headers: headers,
+    fetch("/api/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(body)
     })
       .then(function (res) {
-        if (!res.ok) throw new Error("Upload failed (Status: " + res.status + ")");
-        return res.json();
+        return res.json().then(function (data) {
+          if (!res.ok) throw new Error(data.error || "Upload failed");
+          return data;
+        });
       })
-      .then(function () {
+      .then(function (data) {
         var idx = state.tempImages.indexOf(placeholderObj);
         if (idx !== -1) {
-          state.tempImages[idx] = "assets/images/uploads/" + fileName;
+          state.tempImages[idx] = data.path;
         }
         renderImageManager();
       })
