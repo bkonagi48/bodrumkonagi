@@ -17,21 +17,26 @@ window.SITE_DATA = {
         "en": "Garden View or 2nd Floor"
       },
       "desc": {
-        "en": "A lovely deluxe room overlooking our lush green courtyard.",
-        "tr": "Yemyeşil avlumuza bakan güzel bir deluxe oda."
+        "en": "Standard double bed room, suitable for couples.",
+        "tr": "Standart double yataklı oda, çiftler için uygundur."
       },
       "sizeM2": 18,
       "capacity": 2,
       "beds": {
-        "tr": "1 çift kişilik yatak",
-        "en": "1 double bed"
+        "tr": "Çift Kişilik Yatak",
+        "en": "Double Bed"
       },
       "priceFrom": 4800,
       "currency": "TRY",
       "count": 1,
       "images": [
-        "assets/images/room-3.jpg",
-        "assets/images/room-bath.jpg"
+        "assets/images/rooms/deluxe/1.avif",
+        "assets/images/rooms/deluxe/2.avif",
+        "assets/images/rooms/deluxe/3.avif",
+        "assets/images/rooms/deluxe/4.avif",
+        "assets/images/rooms/deluxe/5.jpg",
+        "assets/images/rooms/deluxe/6.avif",
+        "assets/images/rooms/deluxe/7.avif"
       ],
       "amenities": [
         "wifi",
@@ -64,21 +69,21 @@ window.SITE_DATA = {
         "tr": "Bahçe Katı"
       },
       "desc": {
-        "en": "Comfortable twin room with direct access to the garden floor.",
-        "tr": "Bahçe katına doğrudan erişimi olan konforlu iki yataklı oda."
+        "en": "Room with two separate beds.",
+        "tr": "İki ayrı yataklı oda."
       },
-      "sizeM2": 26,
+      "sizeM2": 20,
       "capacity": 2,
       "beds": {
-        "en": "2 single beds",
-        "tr": "2 tek kişilik yatak"
+        "en": "2 Single Beds",
+        "tr": "2 Tek Kişilik Yatak"
       },
       "priceFrom": 4800,
       "currency": "TRY",
       "count": 1,
       "images": [
-        "assets/images/room-2.jpg",
-        "assets/images/room-bath.jpg"
+        "assets/images/rooms/twin-deluxe/1.avif",
+        "assets/images/rooms/twin-deluxe/2.avif"
       ],
       "amenities": [
         "wifi",
@@ -105,20 +110,23 @@ window.SITE_DATA = {
         "tr": "2. Kat"
       },
       "desc": {
-        "en": "Peaceful room located on the second floor with lovely courtyard views.",
-        "tr": "İkinci katta yer alan, sevimli avlu manzaralı huzurlu oda."
+        "en": "Has 1 double bed. Smaller than other rooms, with only 1 available in the hotel.",
+        "tr": "1 çift kişilik yatak bulunur. Diğer odalara göre daha küçüktür ve otelde 1 adet bulunmaktadır."
       },
-      "sizeM2": 22,
+      "sizeM2": 16,
       "capacity": 2,
       "beds": {
-        "en": "1 double bed",
-        "tr": "1 çift kişilik yatak"
+        "en": "Double Bed",
+        "tr": "Çift Kişilik Yatak"
       },
       "priceFrom": 4500,
       "currency": "TRY",
       "count": 1,
       "images": [
-        "assets/images/room-1.jpg"
+        "assets/images/rooms/junior-deluxe/1.avif",
+        "assets/images/rooms/junior-deluxe/2.avif",
+        "assets/images/rooms/junior-deluxe/3.avif",
+        "assets/images/rooms/junior-deluxe/4.avif"
       ],
       "amenities": [
         "wifi",
@@ -141,21 +149,23 @@ window.SITE_DATA = {
         "tr": "Bahçe Manzaralı"
       },
       "desc": {
-        "en": "Spacious room suitable for up to three guests with garden views.",
-        "tr": "Bahçe manzaralı, üç misafire kadar konaklamaya uygun ferah oda."
+        "en": "Consists of 1 double bed and 1 single bed. Can accommodate 3 adults.",
+        "tr": "1 çift kişilik ve 1 tek kişilik yataktan oluşur. 3 yetişkin konaklayabilir."
       },
-      "sizeM2": 28,
+      "sizeM2": 27,
       "capacity": 3,
       "beds": {
-        "en": "1 double bed + 1 single bed",
-        "tr": "1 çift kişilik yatak + 1 tek kişilik yatak"
+        "en": "1 Double Bed + 1 Single Bed",
+        "tr": "1 Çift Kişilik Yatak + 1 Tek Kişilik Yatak"
       },
       "priceFrom": 5500,
       "currency": "TRY",
       "count": 1,
       "images": [
-        "assets/images/room-3.jpg",
-        "assets/images/room-lounge.jpg"
+        "assets/images/rooms/triple/1.avif",
+        "assets/images/rooms/triple/2.avif",
+        "assets/images/rooms/triple/3.webp",
+        "assets/images/rooms/triple/4.avif"
       ],
       "amenities": [
         "wifi",
@@ -174,21 +184,23 @@ window.SITE_DATA = {
         "tr": "Ranzalı Aile Odası"
       },
       "desc": {
-        "en": "Perfect for families with children, featuring a bunk bed in a comfortable layout.",
-        "tr": "Çocuklu aileler için mükemmel, konforlu bir düzende ranza içeren aile odası."
+        "en": "Consists of 1 double bed and 1 bunk bed.",
+        "tr": "1 çift kişilik yatak ve 1 ranzadan oluşur."
       },
       "sizeM2": 30,
       "capacity": 4,
       "beds": {
-        "en": "1 double bed + 1 bunk bed",
-        "tr": "1 çift kişilik yatak + 1 ranza"
+        "en": "1 Double Bed + 1 Bunk Bed",
+        "tr": "1 Çift Kişilik Yatak + 1 Ranza"
       },
       "priceFrom": 6000,
       "currency": "TRY",
       "count": 1,
       "images": [
-        "assets/images/room-2.jpg",
-        "assets/images/room-bath.jpg"
+        "assets/images/rooms/family-room/1.avif",
+        "assets/images/rooms/family-room/2.avif",
+        "assets/images/rooms/family-room/3.avif",
+        "assets/images/rooms/family-room/4.avif"
       ],
       "amenities": [
         "wifi",
@@ -201,11 +213,11 @@ window.SITE_DATA = {
       ]
     },
     {
-      "id": "senior-suite",
-      "type": "Senior Suite",
+      "id": "junior-suite",
+      "type": "Junior Suite",
       "name": {
-        "en": "Comfort Double Suite",
-        "tr": "Comfort Double Suite"
+        "en": "Junior Suite",
+        "tr": "Junior Suit"
       },
       "view": {
         "tr": "Bahçe Manzaralı",
@@ -216,22 +228,25 @@ window.SITE_DATA = {
         "en": "Garden Floor"
       },
       "desc": {
-        "en": "Our spacious senior suite with elegant decor and direct garden access.",
-        "tr": "Zarif dekorasyona ve doğrudan bahçe erişimine sahip geniş senior suitimiz."
+        "en": "Consists of 1 bedroom and a living area. Includes 1 sofa bed in the living area. Children aged 0-6 stay free.",
+        "tr": "1 yatak odası ve oturma alanından oluşur. Oturma alanında 1 açılır çekyat vardır. 0-6 yaş çocuk ücretsiz olarak konaklayabilir."
       },
-      "sizeM2": 40,
+      "sizeM2": 30,
       "capacity": 3,
       "beds": {
-        "tr": "1 king-size yatak + oturma alanı",
-        "en": "1 king-size bed + lounge"
+        "en": "1 Queen Bed + 1 Sofa Bed",
+        "tr": "1 Geniş Çift Kişilik Yatak + 1 Çekyat"
       },
       "priceFrom": 8000,
       "currency": "TRY",
       "count": 1,
       "images": [
-        "assets/images/room-4.jpg",
-        "assets/images/room-lounge.jpg",
-        "assets/images/room-bath.jpg"
+        "assets/images/rooms/junior-suite/1.avif",
+        "assets/images/rooms/junior-suite/2.avif",
+        "assets/images/rooms/junior-suite/3.avif",
+        "assets/images/rooms/junior-suite/4.avif",
+        "assets/images/rooms/junior-suite/5.avif",
+        "assets/images/rooms/junior-suite/6.avif"
       ],
       "amenities": [
         "wifi",
@@ -260,21 +275,24 @@ window.SITE_DATA = {
         "tr": "Giriş Katı"
       },
       "desc": {
-        "en": "Large suite designed for families, located on the ground floor with garden views.",
-        "tr": "Aileler için tasarlanmış, giriş katında yer alan bahçe manzaralı geniş suit."
+        "en": "Consists of 1 bedroom and a living area. Features 1 single bed, 1 double bed, and 1 single sofa bed. Suitable for 3 adults and one child aged 0-6.",
+        "tr": "1 yatak odası ve oturma alanından oluşur. 1 tek kişilik yatak, 1 çift kişilik yatak ve 1 adet tek kişilik açılır koltuktan oluşur. 3 yetişkin ve bir 0-6 yaş çocuk konaklaması için uygundur."
       },
-      "sizeM2": 45,
-      "capacity": 5,
+      "sizeM2": 32,
+      "capacity": 4,
       "beds": {
-        "en": "1 king-size bed + 2 sofa beds",
-        "tr": "1 king-size yatak + 2 çekyat"
+        "en": "1 Double Bed + 1 Single Bed + 1 Sofa Bed",
+        "tr": "1 Çift Kişilik Yatak + 1 Tek Kişilik Yatak + 1 Çekyat/Açılır Koltuk"
       },
       "priceFrom": 8500,
       "currency": "TRY",
       "count": 1,
       "images": [
-        "assets/images/room-4.jpg",
-        "assets/images/room-lounge.jpg"
+        "assets/images/rooms/family-suite/1.avif",
+        "assets/images/rooms/family-suite/2.avif",
+        "assets/images/rooms/family-suite/3.avif",
+        "assets/images/rooms/family-suite/4.avif",
+        "assets/images/rooms/family-suite/5.avif"
       ],
       "amenities": [
         "wifi",
@@ -299,21 +317,21 @@ window.SITE_DATA = {
         "tr": "Avlu Manzaralı"
       },
       "desc": {
-        "en": "Cozy triple room overlooking the quiet courtyard.",
-        "tr": "Sessiz avluya bakan rahat triple oda."
+        "en": "Compact triple room with courtyard view, featuring 1 double bed and 1 single bed.",
+        "tr": "Avlu manzaralı, 1 çift kişilik ve 1 tek kişilik yatak içeren kompakt triple oda."
       },
-      "sizeM2": 26,
+      "sizeM2": 15,
       "capacity": 3,
       "beds": {
-        "en": "3 single beds",
-        "tr": "3 tek kişilik yatak"
+        "en": "1 Double Bed + 1 Single Bed",
+        "tr": "1 Çift Kişilik Yatak + 1 Tek Kişilik Yatak"
       },
       "priceFrom": 5000,
       "currency": "TRY",
       "count": 1,
       "images": [
-        "assets/images/room-1.jpg",
-        "assets/images/room-bath.jpg"
+        "assets/images/rooms/junior-triple/1.avif",
+        "assets/images/rooms/junior-triple/2.avif"
       ],
       "amenities": [
         "wifi",
