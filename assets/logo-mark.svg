@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 112" fill="none" role="img" aria-label="Bodrum Konağı">
+  <!-- sun -->
+  <circle cx="60" cy="22" r="13" fill="#E08A3C"/>
+  <!-- konak line-art (uses currentColor so it adapts to light/dark) -->
+  <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ground line -->
+    <path d="M10 94 H110"/>
+    <!-- left tower block -->
+    <path d="M20 94 V52 L36 42 V94"/>
+    <rect x="25" y="56" width="7" height="9" rx="1"/>
+    <!-- main facade roofline -->
+    <path d="M36 48 H88 a4 4 0 0 1 4 4 V94"/>
+    <!-- right stepped block -->
+    <path d="M92 66 H104 V94"/>
+    <!-- traditional konak arcade (three arches) -->
+    <path d="M44 94 V80 a6 6 0 0 1 12 0 V94"/>
+    <path d="M60 94 V80 a6 6 0 0 1 12 0 V94"/>
+    <path d="M76 94 V82 a5 5 0 0 1 10 0 V94"/>
+  </g>
+</svg>

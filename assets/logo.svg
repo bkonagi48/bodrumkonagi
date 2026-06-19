@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150" fill="none" role="img" aria-label="Bodrum Konağı">
+  <!-- Standalone lockup (swap target). In-page the wordmark is rendered with web fonts via HTML/CSS. -->
+  <circle cx="130" cy="20" r="12" fill="#E08A3C"/>
+  <g stroke="#23231F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M92 70 H168"/>
+    <path d="M100 70 V40 L112 33 V70"/>
+    <path d="M112 37 H156 a3 3 0 0 1 3 3 V70"/>
+    <path d="M120 70 V60 a5 5 0 0 1 10 0 V70"/>
+    <path d="M134 70 V60 a5 5 0 0 1 10 0 V70"/>
+  </g>
+  <text x="130" y="102" text-anchor="middle" font-family="Georgia, 'Playfair Display', serif" font-size="30" letter-spacing="6" fill="#23231F">BODRUM</text>
+  <text x="146" y="134" text-anchor="middle" font-family="'Segoe Script','Sacramento',cursive" font-size="30" fill="#B07A45" font-style="italic">Konağı</text>
+</svg>

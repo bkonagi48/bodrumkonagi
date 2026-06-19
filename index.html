@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bodrum Konağı — Boutique Hotel in the Heart of Bodrum</title>
+  <meta name="description" content="Bodrum Konağı — a fully renovated boutique konak in the heart of Bodrum, steps from the marina, the bazaar and the Aegean. Happiness starts here." />
+  <meta name="theme-color" content="#102320" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bodrum Konağı — Boutique Hotel in Bodrum" />
+  <meta property="og:description" content="A fully renovated boutique konak in the heart of Bodrum. Happiness starts here." />
+  <meta property="og:image" content="assets/images/hero.jpg" />
+  <meta property="og:url" content="https://bodrumkonagi.com" />
+
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="image" href="assets/images/hero.jpg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ============================ ICON SPRITE ============================ -->
+<svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></g></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="10 6 4 12 10 18"/></g></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="9" x2="17" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></g></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></g></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></g></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.5-1.2-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6-.3.3c-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.4.1.2.1.8-.1 1.4Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></g></symbol>
+    <symbol id="i-navigation" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 13.8 18.5 21 12 16.8 5.5 21 7.5 13.8 2 9.3 9 9" fill="currentColor"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path fill="currentColor" d="M9 7H5a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h2v-3H5v-1h4Zm10 0h-4a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h2v-3h-2v-1h4Z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 19v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M22 19v-2a4 4 0 0 0-3-3.8"/><path d="M16 3.2A4 4 0 0 1 16 11"/></g></symbol>
+    <symbol id="i-size" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5"/><path d="M20 9V4h-5"/><path d="M4 15v5h5"/><path d="M20 15v5h-5"/></g></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17v-5h20v5"/><path d="M2 17v3M22 17v3"/><path d="M2 12V7h9v5"/><path d="M11 12V9h11"/></g></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="0.6" fill="currentColor"/></g></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"/><path d="M17 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 3v2M12 3v2"/></g></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a2.5 2.5 0 1 0-2.5-2.5"/><path d="M3 14h15a2.5 2.5 0 1 1-2.5 2.5"/></g></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16v2M19 16v2"/><path d="M3 16v-3l2-5a2 2 0 0 1 2-1.3h10A2 2 0 0 1 19 8l2 5v3Z"/><path d="M3 13h18"/><circle cx="7.5" cy="13" r="0.6" fill="currentColor"/><circle cx="16.5" cy="13" r="0.6" fill="currentColor"/></g></symbol>
+    <symbol id="i-parking" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/></g></symbol>
+    <symbol id="i-accessible" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="1.6" fill="currentColor" stroke="none"/><path d="M12 8v5h4l2 6"/><path d="M12 11l-3 1a4 4 0 1 0 5 5"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></g></symbol>
+    <symbol id="i-soundproof" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9Z"/><path d="M17 9l4 6M21 9l-4 6"/></g></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 21h8M12 6V3"/></g></symbol>
+    <symbol id="i-wine" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l-1 6a4 4 0 0 1-8 0Z"/><path d="M12 13v6M9 21h6"/></g></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></g></symbol>
+    <symbol id="i-waves" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2 0 2 1.6 4 1.6S8 8 10 8s2 1.6 4 1.6S16 8 18 8s2 1.6 4 1.6"/><path d="M2 14c2 0 2 1.6 4 1.6S8 14 10 14s2 1.6 4 1.6S16 14 18 14s2 1.6 4 1.6"/></g></symbol>
+    <symbol id="i-ban" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4" stroke-linecap="round"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ============================ PRELOADER ============================ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <svg class="preloader__mark"><use href="#i-arrow-right"></use></svg>
+    <img src="assets/logo-mark.svg" alt="" class="preloader__logo" width="64" height="60" />
+    <div class="preloader__name">BODRUM <span>Konağı</span></div>
+    <div class="preloader__count"><span id="preCount">0</span>%</div>
+  </div>
+</div>
+
+<!-- ============================ CUSTOM CURSOR ============================ -->
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
+<!-- ============================ HEADER ============================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <div class="header__left">
+      <button class="nav-btn" id="menuOpen" data-cursor aria-label="Open menu">
+        <svg class="icon"><use href="#i-menu"></use></svg>
+        <span data-i18n="nav.menu">Menu</span>
+      </button>
+      <div class="lang" id="langToggle" role="group" aria-label="Language">
+        <button class="lang__btn is-active" data-lang="en">EN</button>
+        <span class="lang__sep">/</span>
+        <button class="lang__btn" data-lang="tr">TR</button>
+      </div>
+    </div>
+
+    <a href="#home" class="brand" data-cursor aria-label="Bodrum Konağı — home">
+      <img src="assets/logo-mark.svg" alt="" class="brand__mark" width="30" height="28" />
+      <span class="brand__text"><span class="brand__name">BODRUM</span><span class="brand__sub">Konağı</span></span>
+    </a>
+
+    <div class="header__right">
+      <a href="#contact" class="header__link" data-cursor data-i18n="nav.contact">Contact</a>
+      <a class="btn btn--ghost header__book" id="navBook" data-cursor>
+        <span data-i18n="nav.book">Book</span>
+        <svg class="icon"><use href="#i-arrow-right"></use></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ FULLSCREEN MENU ============================ -->
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__bg"></div>
+  <button class="menu__close" id="menuClose" data-cursor aria-label="Close menu"><svg class="icon"><use href="#i-close"></use></svg></button>
+  <div class="menu__inner">
+    <nav class="menu__nav" aria-label="Primary">
+      <a href="#home"      class="menu__link" data-cursor><span class="menu__num">01</span><span data-i18n="menu.home">Home</span></a>
+      <a href="#rooms"     class="menu__link" data-cursor><span class="menu__num">02</span><span data-i18n="menu.rooms">Rooms</span></a>
+      <a href="#amenities" class="menu__link" data-cursor><span class="menu__num">03</span><span data-i18n="menu.experience">Experience</span></a>
+      <a href="#reviews"   class="menu__link" data-cursor><span class="menu__num">04</span><span data-i18n="menu.reviews">Reviews</span></a>
+      <a href="#location"  class="menu__link" data-cursor><span class="menu__num">05</span><span data-i18n="menu.location">Location</span></a>
+      <a href="#contact"   class="menu__link" data-cursor><span class="menu__num">06</span><span data-i18n="menu.contact">Contact</span></a>
+    </nav>
+    <div class="menu__aside">
+      <div class="menu__group">
+        <span class="menu__label" data-i18n="menu.reserve">Reservations</span>
+        <a href="tel:+905330228848" class="menu__contact" data-cursor>+90 533 022 88 48</a>
+        <a href="mailto:info@bodrumkonagi.com" class="menu__contact" data-cursor>info@bodrumkonagi.com</a>
+      </div>
+      <div class="menu__group">
+        <span class="menu__label" data-i18n="menu.find">Find us</span>
+        <p class="menu__addr">Çarşı Mah. 1030 Sokak No:14<br/>48400 Bodrum / Muğla</p>
+        <a href="https://instagram.com/bodrumkonagi" target="_blank" rel="noopener" class="menu__contact" data-cursor>@bodrumkonagi</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="home">
+    <div class="hero__media">
+      <img src="assets/images/hero.jpg" alt="White Bodrum houses above the turquoise Aegean" class="hero__img" id="heroImg" />
+      <div class="hero__scrim"></div>
+    </div>
+    <div class="hero__content">
+      <span class="eyebrow eyebrow--light reveal" data-i18n="hero.eyebrow">Boutique Hotel · Bodrum</span>
+      <h1 class="hero__title display reveal">Bodrum Konağı</h1>
+      <p class="hero__tag display-i reveal" data-i18n="hero.tag">Happiness starts here.</p>
+      <p class="hero__support reveal" data-i18n="hero.support">A fully renovated boutique konak in the heart of the old town — steps from the marina, the bazaar and the Aegean sea.</p>
+    </div>
+
+    <!-- Glass booking bar -->
+    <form class="booking glass reveal" id="bookingBar">
+      <div class="booking__field">
+        <label for="bk-in" data-i18n="book.checkin">Check-in</label>
+        <input type="date" id="bk-in" name="checkin" data-cursor />
+      </div>
+      <div class="booking__field">
+        <label for="bk-out" data-i18n="book.checkout">Check-out</label>
+        <input type="date" id="bk-out" name="checkout" data-cursor />
+      </div>
+      <div class="booking__field">
+        <label for="bk-type" data-i18n="book.type">Room type</label>
+        <div class="select"><select id="bk-type" name="type" data-cursor></select><svg class="icon"><use href="#i-chevron-down"></use></svg></div>
+      </div>
+      <div class="booking__field">
+        <label for="bk-guests" data-i18n="book.guests">Guests</label>
+        <div class="select"><select id="bk-guests" name="guests" data-cursor></select><svg class="icon"><use href="#i-chevron-down"></use></svg></div>
+      </div>
+      <button type="submit" class="booking__btn" data-cursor>
+        <span data-i18n="book.cta">Book on WhatsApp</span>
+        <svg class="icon"><use href="#i-arrow-right"></use></svg>
+      </button>
+    </form>
+
+    <a href="#intro" class="hero__scroll" data-cursor aria-label="Scroll down">
+      <span data-i18n="hero.scroll">Scroll</span>
+      <span class="hero__scroll-line"></span>
+    </a>
+  </section>
+
+  <!-- ============================ INTRO / STATS ============================ -->
+  <section class="intro section" id="intro">
+    <div class="container intro__grid">
+      <div class="intro__lead">
+        <span class="eyebrow reveal" data-i18n="intro.eyebrow">The Konak</span>
+        <h2 class="intro__statement display reveal" data-i18n="intro.statement">In the heart of Bodrum, where the warm spirit of the Aegean meets traditional Bodrum architecture.</h2>
+      </div>
+      <div class="intro__body reveal">
+        <p data-i18n="intro.p1">Bodrum Konağı is a small, completely renovated boutique hotel built around a quiet stone courtyard. Whitewashed walls, warm wood and a shaded garden — a calm base in the middle of everything Bodrum has to offer.</p>
+        <p data-i18n="intro.p2">We'll be delighted to welcome you and help you live the real life of Bodrum, from peaceful mornings to authentic Aegean flavours.</p>
+      </div>
+    </div>
+
+    <div class="container stats">
+      <div class="stat reveal"><span class="stat__num" data-count="4.7" data-decimals="1">4.7</span><span class="stat__label" data-i18n="stat.google">Google rating</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="312" data-suffix="+">312+</span><span class="stat__label" data-i18n="stat.reviews">Guest reviews</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="5" data-suffix="′">5′</span><span class="stat__label" data-i18n="stat.marina">Walk to the marina</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="100" data-suffix="%">100%</span><span class="stat__label" data-i18n="stat.renovated">Renovated</span></div>
+    </div>
+  </section>
+
+  <!-- ============================ EXPERIENCE DIVIDER ============================ -->
+  <section class="divider" id="divider">
+    <div class="divider__media"><img src="assets/images/experience.jpg" alt="Turquoise Aegean waters near Bodrum" class="divider__img" loading="lazy" /><div class="divider__scrim"></div></div>
+    <div class="divider__content">
+      <span class="eyebrow eyebrow--light reveal" data-i18n="divider.eyebrow">Experience</span>
+      <h2 class="divider__title display reveal"><span data-i18n="divider.l1">Live the</span><em class="display-i" data-i18n="divider.l2">Bodrum life</em></h2>
+    </div>
+  </section>
+
+  <!-- ============================ AMENITIES ============================ -->
+  <section class="amenities section section--dark" id="amenities">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow eyebrow--light reveal" data-i18n="amen.eyebrow">What we offer</span>
+        <h2 class="section-title display reveal" data-i18n="amen.title">Everything you need, nothing you don't.</h2>
+      </div>
+
+      <div class="tabs reveal" role="tablist" id="amenTabs">
+        <button class="tab is-active" role="tab" data-tab="comfort" data-cursor data-i18n="amen.tab.comfort">Comfort</button>
+        <button class="tab" role="tab" data-tab="cuisine" data-cursor data-i18n="amen.tab.cuisine">Cuisine</button>
+        <button class="tab" role="tab" data-tab="explore" data-cursor data-i18n="amen.tab.explore">Explore</button>
+        <button class="tab" role="tab" data-tab="around" data-cursor data-i18n="amen.tab.around">Getting around</button>
+      </div>
+
+      <div class="gallery reveal" id="amenGallery"></div>
+
+      <ul class="amenity-row reveal" id="amenityRow">
+        <li><svg class="icon"><use href="#i-wifi"></use></svg><span data-i18n="feat.wifi">Free Wi-Fi</span></li>
+        <li><svg class="icon"><use href="#i-coffee"></use></svg><span data-i18n="feat.breakfast">Free breakfast</span></li>
+        <li><svg class="icon"><use href="#i-wind"></use></svg><span data-i18n="feat.ac">Air conditioning</span></li>
+        <li><svg class="icon"><use href="#i-car"></use></svg><span data-i18n="feat.transfer">Airport transfer</span></li>
+        <li><svg class="icon"><use href="#i-parking"></use></svg><span data-i18n="feat.parking">Parking</span></li>
+        <li><svg class="icon"><use href="#i-accessible"></use></svg><span data-i18n="feat.accessible">Accessible</span></li>
+        <li><svg class="icon"><use href="#i-lock"></use></svg><span data-i18n="feat.safe">In-room safe</span></li>
+        <li><svg class="icon"><use href="#i-soundproof"></use></svg><span data-i18n="feat.soundproof">Sound-proofing</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ ROOMS ============================ -->
+  <section class="rooms section section--dark" id="rooms">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow eyebrow--light reveal" data-i18n="rooms.eyebrow">Stay</span>
+          <h2 class="section-title display reveal" data-i18n="rooms.title">Our Rooms</h2>
+        </div>
+        <p class="section-head__note reveal" data-i18n="rooms.note">Seven room types across twelve individually styled rooms — each renovated in true Bodrum character.</p>
+      </div>
+
+      <div class="filters reveal" id="roomFilters"></div>
+      <div class="rooms__list" id="roomsList"></div>
+    </div>
+  </section>
+
+  <!-- ============================ REVIEWS ============================ -->
+  <section class="reviews section section--dark" id="reviews">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow eyebrow--light reveal" data-i18n="rev.eyebrow">Guest stories</span>
+        <h2 class="section-title display reveal" data-i18n="rev.title">What our guests say</h2>
+      </div>
+
+      <div class="reviews__stage reveal" id="reviewsStage"></div>
+
+      <div class="reviews__controls reveal">
+        <div class="reviews__counter"><span id="revCurrent">01</span> <span class="reviews__sep">/</span> <span id="revTotal">04</span></div>
+        <div class="reviews__thumbs" id="reviewsThumbs"></div>
+        <div class="reviews__arrows">
+          <button class="round-btn" id="revPrev" data-cursor aria-label="Previous review"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+          <button class="round-btn" id="revNext" data-cursor aria-label="Next review"><svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+        </div>
+      </div>
+
+      <div class="ratings reveal" id="ratings"></div>
+    </div>
+  </section>
+
+  <!-- ============================ LOCATION ============================ -->
+  <section class="location section" id="location">
+    <div class="container location__grid">
+      <div class="location__info">
+        <span class="eyebrow reveal" data-i18n="loc.eyebrow">Find us</span>
+        <h2 class="section-title display reveal" data-i18n="loc.title">In the heart of Bodrum</h2>
+        <p class="location__lead reveal" data-i18n="loc.lead">A quiet street in the centre of the old town — everything worth seeing is a short walk away.</p>
+
+        <ul class="distances reveal">
+          <li><span class="distances__place" data-i18n="loc.castle">Bodrum Castle</span><span class="distances__dot"></span><span class="distances__time" data-i18n="loc.min5">5 min walk</span></li>
+          <li><span class="distances__place" data-i18n="loc.bars">Bars Street</span><span class="distances__dot"></span><span class="distances__time" data-i18n="loc.min5">5 min walk</span></li>
+          <li><span class="distances__place" data-i18n="loc.bazaar">Bodrum Bazaar</span><span class="distances__dot"></span><span class="distances__time" data-i18n="loc.min5">5 min walk</span></li>
+          <li><span class="distances__place" data-i18n="loc.marina">Marina</span><span class="distances__dot"></span><span class="distances__time" data-i18n="loc.min8">8 min walk</span></li>
+          <li><span class="distances__place" data-i18n="loc.airport">Milas-Bodrum Airport</span><span class="distances__dot"></span><span class="distances__time" data-i18n="loc.min34">~34 min drive</span></li>
+        </ul>
+
+        <div class="location__addr reveal">
+          <svg class="icon"><use href="#i-pin"></use></svg>
+          <p>Çarşı Mah. 1030 Sokak No:14<br/>48400 Bodrum / Muğla, Türkiye</p>
+        </div>
+
+        <div class="location__actions reveal">
+          <a class="btn btn--dark" href="https://www.google.com/maps/dir/?api=1&destination=Bodrum+Kona%C4%9F%C4%B1+1030+Sk+No+14+48400+Bodrum" target="_blank" rel="noopener" data-cursor>
+            <svg class="icon"><use href="#i-navigation"></use></svg><span data-i18n="loc.directions">Get directions</span>
+          </a>
+          <a class="btn btn--outline" href="tel:+905330228848" data-cursor>
+            <svg class="icon"><use href="#i-phone"></use></svg><span data-i18n="loc.call">Call us</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="location__map reveal">
+        <iframe
+          title="Bodrum Konağı on the map"
+          src="https://www.google.com/maps?q=Bodrum%20Kona%C4%9F%C4%B1%201030%20Sk%20No%2014%2048400%20Bodrum&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="location__maplink" href="https://www.google.com/maps?q=Bodrum+Kona%C4%9F%C4%B1+1030+Sk+No+14+48400+Bodrum" target="_blank" rel="noopener" data-cursor>
+          <svg class="icon"><use href="#i-pin"></use></svg><span data-i18n="loc.openmap">Open in Google Maps</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA / EXPERIENCE ============================ -->
+  <section class="cta section section--dark" id="book">
+    <div class="cta__floats" id="ctaFloats" aria-hidden="true"></div>
+    <div class="container cta__inner">
+      <span class="eyebrow eyebrow--light reveal" data-i18n="cta.eyebrow">Bodrum Konağı</span>
+      <h2 class="cta__title display reveal"><span data-i18n="cta.l1">More than a stay</span> <em class="display-i" data-i18n="cta.l2">— an experience.</em></h2>
+      <p class="cta__support reveal" data-i18n="cta.support">Plan an unforgettable stay in Bodrum today. Message us and we'll take care of the rest.</p>
+      <div class="cta__actions reveal">
+        <a class="btn btn--solid" id="ctaWhatsapp" data-cursor><svg class="icon"><use href="#i-whatsapp"></use></svg><span data-i18n="cta.whatsapp">Chat on WhatsApp</span></a>
+        <a class="btn btn--outline btn--outline-light" href="tel:+905330228848" data-cursor><svg class="icon"><use href="#i-phone"></use></svg>+90 533 022 88 48</a>
+        <a class="btn btn--outline btn--outline-light" href="mailto:info@bodrumkonagi.com" data-cursor><svg class="icon"><use href="#i-mail"></use></svg><span data-i18n="cta.email">Email us</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer" id="contact">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#home" class="brand brand--footer" data-cursor>
+          <img src="assets/logo-mark.svg" alt="" class="brand__mark" width="36" height="34" />
+          <span class="brand__text"><span class="brand__name">BODRUM</span><span class="brand__sub">Konağı</span></span>
+        </a>
+        <p class="footer__tag display-i" data-i18n="hero.tag">Happiness starts here.</p>
+        <p class="footer__desc" data-i18n="footer.desc">A completely renovated boutique konak in the heart of Bodrum city centre. We'll be delighted to welcome you.</p>
+      </div>
+
+      <div class="footer__col">
+        <span class="footer__label" data-i18n="footer.explore">Explore</span>
+        <a href="#rooms" data-cursor data-i18n="menu.rooms">Rooms</a>
+        <a href="#amenities" data-cursor data-i18n="menu.experience">Experience</a>
+        <a href="#reviews" data-cursor data-i18n="menu.reviews">Reviews</a>
+        <a href="#location" data-cursor data-i18n="menu.location">Location</a>
+      </div>
+
+      <div class="footer__col">
+        <span class="footer__label" data-i18n="footer.contact">Contact</span>
+        <a href="tel:+905330228848" data-cursor>+90 533 022 88 48</a>
+        <a href="mailto:info@bodrumkonagi.com" data-cursor>info@bodrumkonagi.com</a>
+        <a href="mailto:bilgi@bodrumkonagi.com" data-cursor>bilgi@bodrumkonagi.com</a>
+        <p class="footer__addr">Çarşı Mah. 1030 Sokak No:14<br/>48400 Bodrum / Muğla</p>
+      </div>
+
+      <div class="footer__col">
+        <span class="footer__label" data-i18n="footer.follow">Follow</span>
+        <a href="https://instagram.com/bodrumkonagi" target="_blank" rel="noopener" class="footer__social" data-cursor><svg class="icon"><use href="#i-instagram"></use></svg> @bodrumkonagi</a>
+        <a id="footWhatsapp" class="footer__social" data-cursor><svg class="icon"><use href="#i-whatsapp"></use></svg> WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> Bodrum Konağı. <span data-i18n="footer.rights">All rights reserved.</span></p>
+      <div class="lang lang--footer" role="group" aria-label="Language">
+        <button class="lang__btn is-active" data-lang="en">EN</button><span class="lang__sep">/</span><button class="lang__btn" data-lang="tr">TR</button>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<button class="to-top" id="toTop" data-cursor aria-label="Back to top"><svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+
+<script src="js/data.js"></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

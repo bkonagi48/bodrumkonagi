@@ -1,0 +1,13 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# Node (only if you later add tooling)
+node_modules/
+npm-debug.log*
+
+# Local screenshots / scratch
+/.screens/
