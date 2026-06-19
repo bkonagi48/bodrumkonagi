@@ -192,7 +192,7 @@ body.has-cursor .cursor{display:block}
 .hero__tag{font-size:clamp(22px,3.4vw,40px);color:#fff;opacity:.96;margin-top:-6px}
 .hero__support{max-width:54ch;font-size:clamp(15px,1.5vw,18px);color:rgba(255,255,255,.86);font-weight:300}
 
-.hero__scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+.hero__scroll{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(255,255,255,.8);z-index:1}
 .hero__scroll-line{width:1px;height:46px;background:linear-gradient(rgba(255,255,255,.9),transparent);position:relative;overflow:hidden}
