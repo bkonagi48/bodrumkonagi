@@ -1142,4 +1142,47 @@ body.has-cursor .cursor{display:block}
   }
 }
 
+/* Make overlays in the hero booking bar open upwards to prevent bottom-of-screen clipping */
+.booking .custom-select-dropdown,
+.booking .custom-datepicker-calendar {
+  top: auto;
+  bottom: calc(100% + 12px);
+  transform: translateY(8px) scale(0.97);
+}
+
+.booking .custom-select-wrap.is-open .custom-select-dropdown {
+  transform: translateY(0) scale(1);
+}
+
+.booking .custom-datepicker-calendar {
+  left: 50%;
+  transform: translateX(-50%) translateY(8px) scale(0.97);
+}
+
+.booking .custom-datepicker-wrap.is-open .custom-datepicker-calendar {
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+@media (min-width: 601px) {
+  /* Prevent calendar going out of bounds in first elements (Check-in) */
+  .booking .booking__field:first-child .custom-datepicker-calendar {
+    left: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  .booking .booking__field:first-child .custom-datepicker-wrap.is-open .custom-datepicker-calendar {
+    transform: translateY(0) scale(1);
+  }
+  
+  /* Prevent calendar going out of bounds in second elements (Check-out) */
+  .booking .booking__field:nth-child(2) .custom-datepicker-calendar {
+    left: auto;
+    right: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  .booking .booking__field:nth-child(2) .custom-datepicker-wrap.is-open .custom-datepicker-calendar {
+    transform: translateY(0) scale(1);
+  }
+}
+
+
 
