@@ -34,8 +34,10 @@
       "amen.eyebrow": "What we offer", "amen.title": "Everything you need, nothing you don't.",
       "amen.tab.comfort": "Comfort", "amen.tab.cuisine": "Cuisine",
       "amen.tab.explore": "Explore", "amen.tab.around": "Getting around",
-      "feat.wifi": "Free Wi-Fi", "feat.breakfast": "Free breakfast", "feat.ac": "Air conditioning",
-      "feat.transfer": "Airport transfer", "feat.parking": "Parking", "feat.accessible": "Accessible",
+      "feat.wifi": "Free Wi-Fi", "feat.breakfast": "Bed & Breakfast or Room Only", "feat.ac": "Air conditioning",
+      "feat.transfer": "Airport transfer", "feat.transfer.note": "Extra charge · Ask via WhatsApp",
+      "feat.parking": "Partner parking", "feat.parking.note": "Discounted rate · Ask via WhatsApp",
+      "feat.accessible": "Accessible",
       "feat.safe": "In-room safe", "feat.soundproof": "Sound-proofing",
       "rooms.eyebrow": "Stay", "rooms.title": "Our Rooms",
       "rooms.note": "Seven room types across twelve individually styled rooms — each renovated in true Bodrum character.",
@@ -80,8 +82,10 @@
       "amen.eyebrow": "Sunduklarımız", "amen.title": "İhtiyacınız olan her şey, fazlası değil.",
       "amen.tab.comfort": "Konfor", "amen.tab.cuisine": "Lezzet",
       "amen.tab.explore": "Keşfet", "amen.tab.around": "Ulaşım",
-      "feat.wifi": "Ücretsiz Wi-Fi", "feat.breakfast": "Ücretsiz kahvaltı", "feat.ac": "Klima",
-      "feat.transfer": "Havaalanı transferi", "feat.parking": "Otopark", "feat.accessible": "Engelli erişimi",
+      "feat.wifi": "Ücretsiz Wi-Fi", "feat.breakfast": "Oda Kahvaltı veya Sadece Oda", "feat.ac": "Klima",
+      "feat.transfer": "Havaalanı transferi", "feat.transfer.note": "Ek ücretli · WhatsApp'tan sorun",
+      "feat.parking": "Anlaşmalı otopark", "feat.parking.note": "İndirimli fiyat · WhatsApp'tan sorun",
+      "feat.accessible": "Engelli erişimi",
       "feat.safe": "Oda kasası", "feat.soundproof": "Ses yalıtımı",
       "rooms.eyebrow": "Konaklama", "rooms.title": "Odalarımız",
       "rooms.note": "Yedi oda tipi, on iki ayrı tasarlanmış oda — her biri gerçek Bodrum karakterinde yenilendi.",
@@ -158,6 +162,17 @@
       var el = document.getElementById(id);
       if (el) { el.setAttribute("href", link); el.setAttribute("target", "_blank"); el.setAttribute("rel", "noopener"); }
     });
+
+    var transferMsg = state.lang === "tr"
+      ? "Merhaba! Bodrum Konağı'na havaalanı transferi hakkında bilgi ve fiyat almak istiyorum."
+      : "Hello! I'd like to ask about airport transfer service and pricing at Bodrum Konağı.";
+    var parkingMsg = state.lang === "tr"
+      ? "Merhaba! Bodrum Konağı anlaşmalı otopark hakkında bilgi ve fiyat almak istiyorum."
+      : "Hello! I'd like to ask about partner parking availability and pricing at Bodrum Konağı.";
+    var tEl = document.getElementById("amenTransfer");
+    if (tEl) { tEl.setAttribute("href", waLink(transferMsg)); }
+    var pEl = document.getElementById("amenParking");
+    if (pEl) { pEl.setAttribute("href", waLink(parkingMsg)); }
   }
 
   /* --------------------------------------------------------- booking options */

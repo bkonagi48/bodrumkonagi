@@ -265,6 +265,11 @@ body.has-cursor .cursor{display:block}
   border-top:1px solid var(--line-d);padding-top:40px}
 .amenity-row li{display:flex;align-items:center;gap:13px;font-size:15px;color:var(--cream-soft)}
 .amenity-row .icon{width:26px;height:26px;color:var(--bronze-lt);flex:none}
+.amenity-has-note{align-items:flex-start !important}
+.amenity-has-note div{display:flex;flex-direction:column;gap:3px}
+.amenity-note{font-size:11px;letter-spacing:.04em;color:var(--bronze-lt);opacity:.8;
+  text-decoration:none;transition:opacity .3s,color .3s}
+.amenity-note:hover{opacity:1;color:var(--sun);text-decoration:underline}
 
 /* =========================== ROOMS =========================== */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(36px,5vw,60px)}
