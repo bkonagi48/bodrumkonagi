@@ -8,7 +8,8 @@
   var state = {
     rooms: [],
     currentToken: "",
-    currentRoomId: null
+    currentRoomId: null,
+    tempImages: []
   };
 
   var $ = function (s) { return document.querySelector(s); };
@@ -109,6 +110,9 @@
     state.currentRoomId = roomId;
     $("#editRoomId").value = roomId;
 
+    // Copy current images
+    state.tempImages = room.images ? JSON.parse(JSON.stringify(room.images)) : [];
+
     // Fill form fields
     $("#roomNameTr").value = room.name.tr || "";
     $("#roomNameEn").value = room.name.en || "";
@@ -128,6 +132,9 @@
 
     $("#modalTitle").textContent = "Edit: " + (room.name.tr || room.name.en);
     $("#editModal").classList.add("is-open");
+
+    // Render image manager
+    renderImageManager();
 
     // Reset lang tabs
     switchLangTab("tr");
@@ -153,6 +160,15 @@
     var idx = state.rooms.findIndex(function (r) { return r.id === roomId; });
     if (idx === -1) return;
 
+    // Check if any images are still in uploading state
+    var isUploading = state.tempImages.some(function (img) {
+      return typeof img === "object" && img.uploading;
+    });
+    if (isUploading) {
+      alert("Lütfen tüm görsellerin yüklenmesini bekleyin! / Please wait for all images to finish uploading!");
+      return;
+    }
+
     // Update state object
     state.rooms[idx].name.tr = $("#roomNameTr").value.trim();
     state.rooms[idx].name.en = $("#roomNameEn").value.trim();
@@ -177,6 +193,9 @@
     state.rooms[idx].capacity = parseInt($("#roomCapacity").value, 10);
     state.rooms[idx].sizeM2 = parseInt($("#roomSize").value, 10);
     state.rooms[idx].count = parseInt($("#roomCount").value, 10);
+
+    // Save images list
+    state.rooms[idx].images = state.tempImages;
 
     // Save back to window.SITE_DATA to sync
     window.SITE_DATA.ROOMS = state.rooms;
@@ -252,6 +271,178 @@
       });
   }
 
+  }
+
+  /* ------------------------------------------------------------- Image Manager */
+  function renderImageManager() {
+    var grid = $("#imageGrid");
+    if (!grid) return;
+
+    grid.innerHTML = state.tempImages.map(function (img, idx) {
+      if (typeof img === "object" && img.uploading) {
+        return '' +
+          '<div class="image-thumb-wrapper">' +
+            '<div class="image-thumb-loading">' +
+              '<span>' + img.progressText + '</span>' +
+            '</div>' +
+          '</div>';
+      }
+      return '' +
+        '<div class="image-thumb-wrapper">' +
+          '<img src="' + img + '" alt="" onerror="this.src=\'assets/images/room-1.jpg\'">' +
+          '<div class="image-thumb-actions">' +
+            (idx > 0 ? '<button type="button" class="image-action-btn move-left" data-idx="' + idx + '">←</button>' : '') +
+            (idx < state.tempImages.length - 1 ? '<button type="button" class="image-action-btn move-right" data-idx="' + idx + '">→</button>' : '') +
+            '<button type="button" class="image-action-btn image-action-btn--delete" data-idx="' + idx + '">×</button>' +
+          '</div>' +
+        '</div>';
+    }).join("");
+
+    // Bind action events
+    $$(".move-left", grid).forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var idx = parseInt(btn.getAttribute("data-idx"), 10);
+        swapImages(idx, idx - 1);
+      });
+    });
+    $$(".move-right", grid).forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var idx = parseInt(btn.getAttribute("data-idx"), 10);
+        swapImages(idx, idx + 1);
+      });
+    });
+    $$(".image-action-btn--delete", grid).forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var idx = parseInt(btn.getAttribute("data-idx"), 10);
+        deleteImage(idx);
+      });
+    });
+  }
+
+  function swapImages(i, j) {
+    var temp = state.tempImages[i];
+    state.tempImages[i] = state.tempImages[j];
+    state.tempImages[j] = temp;
+    renderImageManager();
+  }
+
+  function deleteImage(idx) {
+    if (confirm("Bu fotoğrafı kaldırmak istediğinizden emin misiniz?\nAre you sure you want to remove this photo?")) {
+      state.tempImages.splice(idx, 1);
+      renderImageManager();
+    }
+  }
+
+  function handleFiles(files) {
+    if (!files || !files.length) return;
+    Array.prototype.slice.call(files).forEach(function (file) {
+      if (!file.type.startsWith("image/")) return;
+
+      var ext = file.name ? file.name.split(".").pop().toLowerCase() : "jpg";
+      if (!file.name && file.type) {
+        ext = file.type.split("/")[1] || "jpg";
+      }
+      var timestamp = Date.now() + "_" + Math.floor(Math.random() * 1000);
+      var fileName = "room_" + state.currentRoomId + "_" + timestamp + "." + ext;
+
+      var placeholder = { uploading: true, progressText: "Uploading..." };
+      state.tempImages.push(placeholder);
+      renderImageManager();
+
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var base64Data = e.target.result.split(",")[1];
+        uploadFileToGitHub(base64Data, fileName, placeholder);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function uploadFileToGitHub(base64Data, fileName, placeholderObj) {
+    var url = "https://api.github.com/repos/" + REPO_PATH + "/contents/assets/images/uploads/" + fileName;
+    var headers = {
+      "Authorization": "token " + state.currentToken,
+      "Accept": "application/vnd.github+json"
+    };
+    var body = {
+      message: "media: upload room image via admin dashboard",
+      content: base64Data
+    };
+
+    fetch(url, {
+      method: "PUT",
+      headers: headers,
+      body: JSON.stringify(body)
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("Upload failed (Status: " + res.status + ")");
+        return res.json();
+      })
+      .then(function () {
+        var idx = state.tempImages.indexOf(placeholderObj);
+        if (idx !== -1) {
+          state.tempImages[idx] = "assets/images/uploads/" + fileName;
+        }
+        renderImageManager();
+      })
+      .catch(function (err) {
+        alert("Görsel yüklenemedi! / Image upload failed: " + err.message);
+        var idx = state.tempImages.indexOf(placeholderObj);
+        if (idx !== -1) {
+          state.tempImages.splice(idx, 1);
+        }
+        renderImageManager();
+      });
+  }
+
+  function handlePaste(e) {
+    if (!state.currentRoomId) return; // Only listen inside modal
+    var items = (e.clipboardData || e.originalEvent.clipboardData).items;
+    var files = [];
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image") !== -1) {
+        var blob = items[i].getAsFile();
+        if (blob) files.push(blob);
+      }
+    }
+    if (files.length > 0) {
+      e.preventDefault();
+      handleFiles(files);
+    }
+  }
+
+  function initDragAndDrop() {
+    var zone = $("#imageDropzone");
+    if (!zone) return;
+
+    window.addEventListener("dragover", function (e) { e.preventDefault(); }, false);
+    window.addEventListener("drop", function (e) { e.preventDefault(); }, false);
+
+    zone.addEventListener("dragover", function (e) {
+      e.preventDefault();
+      zone.classList.add("dragover");
+    });
+
+    zone.addEventListener("dragleave", function () {
+      zone.classList.remove("dragover");
+    });
+
+    zone.addEventListener("drop", function (e) {
+      e.preventDefault();
+      zone.classList.remove("dragover");
+      if (e.dataTransfer && e.dataTransfer.files) {
+        handleFiles(e.dataTransfer.files);
+      }
+    });
+
+    var fileInput = $("#imageInput");
+    if (fileInput) {
+      fileInput.addEventListener("change", function () {
+        handleFiles(fileInput.files);
+      });
+    }
+  }
+
   /* ------------------------------------------------------------- Events Binding */
   function initEvents() {
     $("#loginBtn").addEventListener("click", handleLogin);
@@ -272,6 +463,12 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeEditModal();
     });
+
+    // Paste handler
+    window.addEventListener("paste", handlePaste);
+
+    // Drag and Drop
+    initDragAndDrop();
   }
 
   // Check storage on page load
