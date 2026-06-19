@@ -296,6 +296,9 @@
     }
   }
 
+  var uploadQueue = [];
+  var isUploadingNow = false;
+
   function handleFiles(files) {
     if (!files || !files.length) return;
     Array.prototype.slice.call(files).forEach(function (file) {
@@ -315,13 +318,33 @@
       var reader = new FileReader();
       reader.onload = function (e) {
         var base64Data = e.target.result.split(",")[1];
-        uploadFileToGitHub(base64Data, fileName, placeholder);
+        uploadQueue.push({
+          base64Data: base64Data,
+          fileName: fileName,
+          placeholder: placeholder
+        });
+        processUploadQueue();
       };
       reader.readAsDataURL(file);
     });
   }
 
-  function uploadFileToGitHub(base64Data, fileName, placeholderObj) {
+  function processUploadQueue() {
+    if (isUploadingNow || uploadQueue.length === 0) return;
+    isUploadingNow = true;
+
+    var item = uploadQueue.shift();
+    item.placeholder.progressText = "Saving...";
+    renderImageManager();
+
+    uploadFileToGitHub(item.base64Data, item.fileName, item.placeholder, function () {
+      isUploadingNow = false;
+      // Wait 800ms to allow GitHub's branch reference to settle down
+      setTimeout(processUploadQueue, 800);
+    });
+  }
+
+  function uploadFileToGitHub(base64Data, fileName, placeholderObj, callback) {
     var body = {
       password: localStorage.getItem("bk_admin_password") || DEFAULT_PASS,
       base64Data: base64Data,
@@ -347,6 +370,7 @@
           state.tempImages[idx] = data.path;
         }
         renderImageManager();
+        if (callback) callback();
       })
       .catch(function (err) {
         alert("Görsel yüklenemedi! / Image upload failed: " + err.message);
@@ -355,6 +379,7 @@
           state.tempImages.splice(idx, 1);
         }
         renderImageManager();
+        if (callback) callback();
       });
   }
 
