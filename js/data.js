@@ -542,11 +542,11 @@ window.SITE_DATA = {
     ]
   },
   "EXPERIENCE_IMAGES": [
-    "assets/images/exp-1.jpg",
-    "assets/images/exp-2.jpg",
-    "assets/images/exp-4.jpg",
-    "assets/images/exp-5.jpg",
-    "assets/images/act-beach.jpg"
+    "assets/images/cta/1.jpg",
+    "assets/images/cta/2.jpg",
+    "assets/images/cta/3.jpg",
+    "assets/images/cta/4.jpg",
+    "assets/images/cta/5.jpg"
   ],
   "INSTAGRAM": {
     "profile": {
