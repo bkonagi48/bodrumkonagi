@@ -37,7 +37,7 @@ assets/images/        # all photos (see assets/images/README.md to swap them)
 
 ## Contact details used on the site
 - Phone / WhatsApp: **+90 533 022 88 48**
-- Email: **info@bodrumkonagi.com**, **bilgi@bodrumkonagi.com**
+- Email: **bodrumkonagi@gmail.com**
 - Instagram: **@bodrumkonagi**
 - Address: Çarşı Mah. 1030 Sokak No:14, 48400 Bodrum / Muğla
 

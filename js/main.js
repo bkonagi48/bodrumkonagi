@@ -7,7 +7,7 @@
   var DATA = window.SITE_DATA || {};
   var PHONE = "+905330228848";
   var WA = "905330228848";
-  var EMAIL = "info@bodrumkonagi.com";
+  var EMAIL = "bodrumkonagi@gmail.com";
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var state = { lang: localStorage.getItem("bk_lang") || "en", filter: "all", review: 0 };

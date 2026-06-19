@@ -558,8 +558,8 @@ window.SITE_DATA = {
       "followersCount": 623,
       "followingCount": 9,
       "bio": {
-        "en": "Boutique Hotel in Bodrum Center 🌿\nFully Renovated Rooms\n📲 Reservation: +90 533 022 88 48\n✉️ info@bodrumkonagi.com\nÇarşı, 1030 Sk No: 14, Bodrum, Mugla 48400",
-        "tr": "Bodrum Merkezde Butik Otel 🌿\nTamamen Yenilenmiş Odalar\n📲 Rezervasyon: +90 533 022 88 48\n✉️ info@bodrumkonagi.com\nÇarşı, 1030 Sk No: 14, Bodrum, Muğla 48400"
+        "en": "Boutique Hotel in Bodrum Center 🌿\nFully Renovated Rooms\n📲 Reservation: +90 533 022 88 48\n✉️ bodrumkonagi@gmail.com\nÇarşı, 1030 Sk No: 14, Bodrum, Mugla 48400",
+        "tr": "Bodrum Merkezde Butik Otel 🌿\nTamamen Yenilenmiş Odalar\n📲 Rezervasyon: +90 533 022 88 48\n✉️ bodrumkonagi@gmail.com\nÇarşı, 1030 Sk No: 14, Bodrum, Muğla 48400"
       }
     },
     "posts": [
