@@ -237,41 +237,41 @@ window.SITE_DATA = {
       username: "bodrumkonagi",
       fullName: "Bodrum Konağı",
       link: "https://instagram.com/bodrumkonagi",
-      avatar: "assets/logo-mark.svg",
-      postsCount: 124,
-      followersCount: "3.8K",
-      followingCount: 142,
+      avatar: "assets/images/instagram-avatar.png",
+      postsCount: 6,
+      followersCount: 623,
+      followingCount: 9,
       bio: {
-        en: "Boutique Hotel in the heart of Bodrum Old Town. Whitewashed walls, quiet courtyard, steps from the marina. 🌿✨",
-        tr: "Bodrum Eski Şehir'in kalbinde Butik Otel. Bembeyaz duvarlar, sessiz avlu, marinaya birkaç adım. 🌿✨"
+        en: "Boutique Hotel in Bodrum Center 🌿\nFully Renovated Rooms\n📲 Reservation: +90 533 022 88 48\n✉️ info@bodrumkonagi.com\nÇarşı, 1030 Sk No: 14, Bodrum, Mugla 48400",
+        tr: "Bodrum Merkezde Butik Otel 🌿\nTamamen Yenilenmiş Odalar\n📲 Rezervasyon: +90 533 022 88 48\n✉️ info@bodrumkonagi.com\nÇarşı, 1030 Sk No: 14, Bodrum, Muğla 48400"
       }
     },
     posts: [
       {
-        img: "assets/images/exp-1.jpg",
-        likes: 142,
-        comments: 12,
+        img: "assets/images/instagram-1.png",
+        likes: 24,
+        comments: 3,
         caption: {
-          en: "Peaceful mornings in our quiet stone courtyard. ☕️🌸 #bodrumkonagi #boutiquehotel",
-          tr: "Sessiz taş avlumuzda huzurlu sabahlar. ☕️🌸 #bodrumkonagi #butikotel"
+          en: "🐈...",
+          tr: "🐈..."
         }
       },
       {
-        img: "assets/images/act-breakfast.jpg",
-        likes: 218,
-        comments: 18,
+        img: "assets/images/instagram-2.png",
+        likes: 56,
+        comments: 5,
         caption: {
-          en: "A proper Aegean spread to start your day. Everything fresh and local. 🍇🧀",
-          tr: "Güne başlamak için gerçek bir Ege kahvaltısı. Her şey taze ve yerel. 🍇🧀"
+          en: "Enjoy your breakfast in our beautiful terrace dining area. 🍳✨ #bodrumkonagi",
+          tr: "Güzel teras yemek alanımızda kahvaltının tadını çıkarın. 🍳✨ #bodrumkonagi"
         }
       },
       {
-        img: "assets/images/act-beach.jpg",
-        likes: 189,
-        comments: 15,
+        img: "assets/images/instagram-3.png",
+        likes: 72,
+        comments: 8,
         caption: {
-          en: "Under the Aegean sun, just minutes away from our door. ☀️🌊",
-          tr: "Ege güneşinin altında, kapımızdan sadece dakikalar uzaklıkta. ☀️🌊"
+          en: "Twin Room. designed for you💫 . . #BodrumKonağı #boutiquehotel",
+          tr: "Twin Oda. sizin için tasarlandı💫 . . #BodrumKonağı #butikotel"
         }
       }
     ]
