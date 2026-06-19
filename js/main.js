@@ -218,10 +218,22 @@
       var resMsg = (state.lang === "tr"
         ? "Merhaba! Bodrum Konağı'nda \"" + L(r.name) + "\" için müsaitlik öğrenmek istiyorum."
         : "Hello! I'd like to check availability for the \"" + L(r.name) + "\" at Bodrum Konağı.");
+
+      var sliderHTML = "";
+      if (r.images && r.images.length > 1) {
+        sliderHTML =
+          '<button class="room-slider__btn room-slider__btn--prev" data-dir="-1" aria-label="Previous Image">' + icon("i-arrow-left") + '</button>' +
+          '<button class="room-slider__btn room-slider__btn--next" data-dir="1" aria-label="Next Image">' + icon("i-arrow-right") + '</button>' +
+          '<div class="room-slider__counter">1 / ' + r.images.length + '</div>';
+      }
+
       return '' +
         '<article class="room-row reveal">' +
-          '<div class="room-row__media"><span class="room-row__num">' + n + '</span>' +
-            '<img src="' + (r.images && r.images[0]) + '" alt="' + L(r.name) + '" loading="lazy"></div>' +
+          '<div class="room-row__media" data-room-id="' + r.id + '" data-current-idx="0">' +
+            '<span class="room-row__num">' + n + '</span>' +
+            '<img src="' + (r.images && r.images[0]) + '" alt="' + L(r.name) + '" loading="lazy">' +
+            sliderHTML +
+          '</div>' +
           '<div class="room-row__info">' +
             '<span class="room-chip">' + r.type + '</span>' +
             '<h3 class="room-row__name">' + L(r.name) + '</h3>' +
@@ -514,6 +526,40 @@
     });
   }
 
+  /* --------------------------------------------------------- room sliders */
+  function initRoomSliders() {
+    var wrap = $("#roomsList");
+    if (!wrap) return;
+    wrap.addEventListener("click", function (e) {
+      var btn = e.target.closest(".room-slider__btn");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      var dir = parseInt(btn.getAttribute("data-dir"), 10);
+      var media = btn.closest(".room-row__media");
+      var roomId = media.getAttribute("data-room-id");
+
+      var room = (DATA.ROOMS || []).find(function (r) { return r.id === roomId; });
+      if (!room || !room.images || room.images.length <= 1) return;
+
+      var currentIdx = parseInt(media.getAttribute("data-current-idx") || "0", 10);
+      var nextIdx = (currentIdx + dir + room.images.length) % room.images.length;
+
+      media.setAttribute("data-current-idx", nextIdx);
+
+      var img = media.querySelector("img");
+      if (img) {
+        img.src = room.images[nextIdx];
+      }
+
+      var counter = media.querySelector(".room-slider__counter");
+      if (counter) {
+        counter.textContent = (nextIdx + 1) + " / " + room.images.length;
+      }
+    });
+  }
+
   /* ---------------------------------------------------------------- init */
   function init() {
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -530,7 +576,7 @@
     renderGallery("comfort");
     applyI18n();
 
-    initCursor(); initHeader(); initMenu(); initTabs(); initBooking(); initCounters(); initParallax();
+    initCursor(); initHeader(); initMenu(); initTabs(); initBooking(); initRoomSliders(); initCounters(); initParallax();
 
     $("#revPrev").addEventListener("click", function () { moveReview(-1); });
     $("#revNext").addEventListener("click", function () { moveReview(1); });
