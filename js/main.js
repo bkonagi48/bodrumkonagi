@@ -1056,9 +1056,15 @@
 
     // reviews autoplay
     if (!reduceMotion) {
-      var auto = setInterval(function () { moveReview(1); }, 6500);
+      var autoTimer = setInterval(function () { moveReview(1); }, 6500);
       var revSec = $("#reviews");
-      revSec.addEventListener("mouseenter", function () { clearInterval(auto); });
+      if (revSec) {
+        revSec.addEventListener("mouseenter", function () { clearInterval(autoTimer); });
+        revSec.addEventListener("mouseleave", function () {
+          clearInterval(autoTimer);
+          autoTimer = setInterval(function () { moveReview(1); }, 6500);
+        });
+      }
     }
 
     runPreloader(function () { observeReveals(document); });
