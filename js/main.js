@@ -1134,7 +1134,7 @@
     function startMap() {
       var leaflet = window.L;
       if (!leaflet) return;
-      var lat = 37.036556, lng = 27.428773;
+      var lat = 37.036556, lng = 27.431348;
       var map = leaflet.map(el, {
         center: [lat, lng],
         zoom: 16,
