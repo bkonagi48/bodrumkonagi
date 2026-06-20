@@ -27,7 +27,8 @@
 
 /* ---------- reset ---------- */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-width:none}
+html::-webkit-scrollbar{display:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
   font-family:var(--sans);
@@ -1271,5 +1272,126 @@ body.has-cursor .cursor{display:block}
   }
 }
 
+/* =================== SECTION NAVIGATOR =================== */
+.secnav{
+  position:fixed;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:90;
+  pointer-events:auto;
+  opacity:0;
+  transition:opacity .4s var(--ease);
+}
+.secnav.is-visible{opacity:1}
+.secnav__track{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:2px;
+  padding:10px 6px;
+  border-radius:20px;
+  background:transparent;
+  transition:background .35s var(--ease), box-shadow .35s var(--ease),
+             backdrop-filter .35s var(--ease), padding .35s var(--ease);
+}
+.secnav:hover .secnav__track,
+.secnav.is-touch-open .secnav__track{
+  background:rgba(16,35,32,.72);
+  box-shadow:0 8px 32px rgba(16,35,32,.28);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:14px 16px 14px 18px;
+  border-radius:16px;
+}
+.secnav__item{
+  display:flex;
+  align-items:center;
+  gap:0;
+  padding:6px 0;
+  text-decoration:none;
+  color:rgba(255,255,255,.45);
+  transition:color .25s var(--ease), gap .3s var(--ease);
+  white-space:nowrap;
+  position:relative;
+}
+.secnav:hover .secnav__item,
+.secnav.is-touch-open .secnav__item{
+  gap:10px;
+}
+.secnav__item.is-active{color:rgba(255,255,255,1)}
+.secnav__item:hover{color:var(--bronze-lt)}
+.secnav__dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:currentColor;
+  flex:none;
+  transition:transform .25s var(--ease), width .25s var(--ease), height .25s var(--ease);
+}
+.secnav__item.is-active .secnav__dot{
+  width:8px;
+  height:8px;
+  background:var(--bronze-lt);
+}
+.secnav:hover .secnav__dot,
+.secnav.is-touch-open .secnav__dot{
+  width:0;
+  height:0;
+  overflow:hidden;
+}
+.secnav__num{
+  font-family:var(--sans);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.08em;
+  opacity:0;
+  max-width:0;
+  overflow:hidden;
+  transition:opacity .25s var(--ease), max-width .3s var(--ease);
+  color:rgba(255,255,255,.35);
+}
+.secnav:hover .secnav__num,
+.secnav.is-touch-open .secnav__num{
+  opacity:1;
+  max-width:28px;
+}
+.secnav__item.is-active .secnav__num{color:var(--bronze-lt)}
+.secnav__label{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:400;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  opacity:0;
+  max-width:0;
+  overflow:hidden;
+  transition:opacity .25s var(--ease) .05s, max-width .3s var(--ease);
+}
+.secnav:hover .secnav__label,
+.secnav.is-touch-open .secnav__label{
+  opacity:1;
+  max-width:120px;
+}
+/* On dark sections, dots are lighter by default */
+.secnav--on-dark .secnav__item{color:rgba(255,255,255,.5)}
+.secnav--on-dark .secnav__item.is-active{color:#fff}
+/* On light sections, dots are dark */
+.secnav--on-light .secnav__item{color:rgba(35,35,31,.3)}
+.secnav--on-light .secnav__item.is-active{color:var(--bronze)}
+.secnav--on-light .secnav__item.is-active .secnav__dot{background:var(--bronze)}
 
+/* Mobile: smaller, tighter */
+@media(max-width:768px){
+  .secnav{right:8px}
+  .secnav__track{padding:8px 4px;gap:0}
+  .secnav__item{padding:5px 0}
+  .secnav__dot{width:5px;height:5px}
+  .secnav__item.is-active .secnav__dot{width:7px;height:7px}
+  .secnav:hover .secnav__track,
+  .secnav.is-touch-open .secnav__track{
+    padding:12px 14px 12px 16px;
+  }
+  .secnav__label{font-size:11px}
+}
 

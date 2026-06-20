@@ -1032,6 +1032,64 @@
     });
   }
 
+  /* --------------------------------------------------------- section nav */
+  function initSecNav() {
+    var nav = document.getElementById("secNav");
+    if (!nav) return;
+
+    var items = Array.prototype.slice.call(nav.querySelectorAll(".secnav__item"));
+    var sectionIds = items.map(function (it) { return it.getAttribute("data-section"); });
+    var sections = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+
+    // Show/hide based on scroll depth (hide in hero top, show after scrolling a bit)
+    function checkVisibility() {
+      var y = window.pageYOffset;
+      nav.classList.toggle("is-visible", y > 300);
+    }
+
+    // Track active section with IntersectionObserver
+    var currentSection = "home";
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && en.intersectionRatio >= 0.15) {
+          currentSection = en.target.id;
+          items.forEach(function (it) {
+            it.classList.toggle("is-active", it.getAttribute("data-section") === currentSection);
+          });
+          // Adapt colors based on section background
+          var isDark = en.target.classList.contains("section--dark") || en.target.id === "divider";
+          nav.classList.toggle("secnav--on-dark", isDark);
+          nav.classList.toggle("secnav--on-light", !isDark);
+        }
+      });
+    }, { threshold: [0.15, 0.5], rootMargin: "-20% 0px -20% 0px" });
+
+    sections.forEach(function (sec) { observer.observe(sec); });
+
+    window.addEventListener("scroll", checkVisibility, { passive: true });
+    checkVisibility();
+
+    // Mobile touch support: tap to open, tap again or tap outside to close
+    var isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) {
+      nav.addEventListener("click", function (e) {
+        var link = e.target.closest(".secnav__item");
+        if (!nav.classList.contains("is-touch-open")) {
+          e.preventDefault();
+          nav.classList.add("is-touch-open");
+        } else if (link) {
+          // Let the click go through for navigation
+          nav.classList.remove("is-touch-open");
+        }
+      });
+      document.addEventListener("click", function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove("is-touch-open");
+        }
+      });
+    }
+  }
+
   /* ---------------------------------------------------------------- init */
   function init() {
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -1048,7 +1106,7 @@
     renderGallery("comfort");
     applyI18n();
 
-    initCursor(); initHeader(); initMenu(); initTabs(); initBooking(); initRoomSliders(); initCounters(); initParallax();
+    initCursor(); initHeader(); initMenu(); initTabs(); initBooking(); initRoomSliders(); initCounters(); initParallax(); initSecNav();
 
     $("#revPrev").addEventListener("click", function () { moveReview(-1); });
     $("#revNext").addEventListener("click", function () { moveReview(1); });
