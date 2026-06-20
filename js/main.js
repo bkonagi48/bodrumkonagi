@@ -1078,18 +1078,29 @@
       }
     }
 
-    // Track active section with IntersectionObserver
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting && en.intersectionRatio >= 0.15) {
-          items.forEach(function (it) {
-            it.classList.toggle("is-active", it.getAttribute("data-section") === en.target.id);
-          });
-        }
-      });
-    }, { threshold: [0.15, 0.5], rootMargin: "-20% 0px -20% 0px" });
+    // Robust scroll spy for active navigation item
+    function updateActiveSection() {
+      var activeId = "";
+      var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      var triggerPoint = scrollPosition + (window.innerHeight / 3);
 
-    sections.forEach(function (sec) { observer.observe(sec); });
+      for (var i = 0; i < sections.length; i++) {
+        var sec = sections[i];
+        var rect = sec.getBoundingClientRect();
+        var secTop = rect.top + scrollPosition;
+        if (triggerPoint >= secTop) {
+          activeId = sec.id;
+        } else {
+          break;
+        }
+      }
+
+      if (activeId) {
+        items.forEach(function (it) {
+          it.classList.toggle("is-active", it.getAttribute("data-section") === activeId);
+        });
+      }
+    }
 
     var scrollTicking = false;
     function onScroll() {
@@ -1098,6 +1109,7 @@
         requestAnimationFrame(function () {
           checkVisibility();
           detectBackground();
+          updateActiveSection();
           scrollTicking = false;
         });
       }
@@ -1105,6 +1117,7 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     checkVisibility();
     detectBackground();
+    updateActiveSection();
 
     // Mobile touch support: tap to open, tap again or tap outside to close
     var isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
