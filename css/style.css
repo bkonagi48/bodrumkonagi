@@ -178,6 +178,11 @@ body.has-cursor .cursor{display:block}
 .menu__contact{color:var(--cream);font-size:17px;transition:.3s}
 .menu__contact:hover{color:var(--bronze-lt)}
 .menu__addr{color:var(--cream-soft);font-size:15px;line-height:1.7}
+.menu__lang{display:none;align-items:center;gap:8px;font-size:14px;letter-spacing:.12em;font-weight:500;color:var(--cream-soft);margin-top:20px;padding-left:4px}
+.menu__lang .lang__btn{color:inherit;opacity:.6;transition:.3s}
+.menu__lang .lang__btn.is-active{color:var(--cream);opacity:1;font-weight:500}
+.menu__lang .lang__btn:hover{color:var(--cream);opacity:1}
+.menu__lang .lang__sep{opacity:.4}
 
 /* =========================== HERO =========================== */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
@@ -753,6 +758,7 @@ body.has-cursor .cursor{display:block}
   .location__map{aspect-ratio:16/10;min-height:260px}
   .menu__inner{grid-template-columns:1fr}
   .menu__aside{display:none}
+  .menu__lang{display:inline-flex}
   .gallery{grid-template-columns:repeat(2,1fr)}
   .gallery__item:first-child{grid-row:span 1;aspect-ratio:3/4}
   .footer__grid{grid-template-columns:1fr 1fr}
