@@ -1132,21 +1132,23 @@
     if (!el) return;
 
     function startMap() {
+      var leaflet = window.L;
+      if (!leaflet) return;
       var lat = 37.03445, lng = 27.42915;
-      var map = L.map(el, {
+      var map = leaflet.map(el, {
         center: [lat, lng],
         zoom: 16,
         zoomControl: false,
         attributionControl: false,
         scrollWheelZoom: false,
-        dragging: !L.Browser.mobile,
+        dragging: !leaflet.Browser.mobile,
         tap: false
       });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      leaflet.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
         maxZoom: 19,
         subdomains: "abcd"
       }).addTo(map);
-      var pinIcon = L.divIcon({
+      var pinIcon = leaflet.divIcon({
         className: "leaflet-pin",
         html: '<svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">'
           + '<path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.268 21.732 0 14 0z" fill="#E04040"/>'
@@ -1157,7 +1159,7 @@
         iconAnchor: [14, 40],
         popupAnchor: [0, -40]
       });
-      var marker = L.marker([lat, lng], { icon: pinIcon }).addTo(map);
+      var marker = leaflet.marker([lat, lng], { icon: pinIcon }).addTo(map);
       marker.bindPopup(
         '<div style="font-family:var(--sans);text-align:center;padding:4px 2px">'
         + '<strong style="font-size:14px">Bodrum Konağı</strong><br>'
@@ -1172,7 +1174,7 @@
     }
 
     // Load Leaflet CSS + JS lazily so it never blocks the preloader
-    if (typeof L !== "undefined") { startMap(); return; }
+    if (typeof window.L !== "undefined" && window.L.map) { startMap(); return; }
     var cssEl = document.createElement("link");
     cssEl.rel = "stylesheet";
     cssEl.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
