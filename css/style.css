@@ -1297,7 +1297,7 @@ body.has-cursor .cursor{display:block}
 }
 .secnav:hover .secnav__track,
 .secnav.is-touch-open .secnav__track{
-  background:rgba(16,35,32,.72);
+  background:rgba(16,35,32,.78);
   box-shadow:0 8px 32px rgba(16,35,32,.28);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
@@ -1310,24 +1310,34 @@ body.has-cursor .cursor{display:block}
   gap:0;
   padding:6px 0;
   text-decoration:none;
-  color:rgba(255,255,255,.45);
-  transition:color .25s var(--ease), gap .3s var(--ease);
   white-space:nowrap;
   position:relative;
+  /* Default: light dots for dark backgrounds */
+  color:rgba(255,255,255,.4);
+  transition:color .5s var(--ease), gap .3s var(--ease);
 }
 .secnav:hover .secnav__item,
 .secnav.is-touch-open .secnav__item{
   gap:10px;
+  /* Expanded panel is always dark → always light text */
+  color:rgba(255,255,255,.5) !important;
 }
-.secnav__item.is-active{color:rgba(255,255,255,1)}
-.secnav__item:hover{color:var(--bronze-lt)}
+.secnav__item.is-active{color:rgba(255,255,255,.95)}
+.secnav:hover .secnav__item.is-active,
+.secnav.is-touch-open .secnav__item.is-active{
+  color:rgba(255,255,255,1) !important;
+}
+.secnav:hover .secnav__item:hover,
+.secnav.is-touch-open .secnav__item:hover{
+  color:var(--bronze-lt) !important;
+}
 .secnav__dot{
   width:6px;
   height:6px;
   border-radius:50%;
   background:currentColor;
   flex:none;
-  transition:transform .25s var(--ease), width .25s var(--ease), height .25s var(--ease);
+  transition:width .25s var(--ease), height .25s var(--ease), background .5s var(--ease);
 }
 .secnav__item.is-active .secnav__dot{
   width:8px;
@@ -1336,9 +1346,7 @@ body.has-cursor .cursor{display:block}
 }
 .secnav:hover .secnav__dot,
 .secnav.is-touch-open .secnav__dot{
-  width:0;
-  height:0;
-  overflow:hidden;
+  width:0;height:0;overflow:hidden;
 }
 .secnav__num{
   font-family:var(--sans);
@@ -1348,15 +1356,19 @@ body.has-cursor .cursor{display:block}
   opacity:0;
   max-width:0;
   overflow:hidden;
-  transition:opacity .25s var(--ease), max-width .3s var(--ease);
+  transition:opacity .25s var(--ease), max-width .3s var(--ease), color .5s var(--ease);
   color:rgba(255,255,255,.35);
 }
 .secnav:hover .secnav__num,
 .secnav.is-touch-open .secnav__num{
-  opacity:1;
-  max-width:28px;
+  opacity:1;max-width:28px;
+  color:rgba(255,255,255,.4) !important;
 }
 .secnav__item.is-active .secnav__num{color:var(--bronze-lt)}
+.secnav:hover .secnav__item.is-active .secnav__num,
+.secnav.is-touch-open .secnav__item.is-active .secnav__num{
+  color:var(--bronze-lt) !important;
+}
 .secnav__label{
   font-family:var(--sans);
   font-size:12px;
@@ -1370,16 +1382,17 @@ body.has-cursor .cursor{display:block}
 }
 .secnav:hover .secnav__label,
 .secnav.is-touch-open .secnav__label{
-  opacity:1;
-  max-width:120px;
+  opacity:1;max-width:120px;
 }
-/* On dark sections, dots are lighter by default */
-.secnav--on-dark .secnav__item{color:rgba(255,255,255,.5)}
-.secnav--on-dark .secnav__item.is-active{color:#fff}
-/* On light sections, dots are dark */
-.secnav--on-light .secnav__item{color:rgba(35,35,31,.3)}
+
+/* ---- Collapsed dot colors adapt to background ---- */
+/* Dark background → light dots (default, no extra rule needed) */
+
+/* Light background → dark dots */
+.secnav--on-light .secnav__item{color:rgba(35,35,31,.28)}
 .secnav--on-light .secnav__item.is-active{color:var(--bronze)}
 .secnav--on-light .secnav__item.is-active .secnav__dot{background:var(--bronze)}
+.secnav--on-light .secnav__item.is-active .secnav__num{color:var(--bronze)}
 
 /* Mobile: smaller, tighter */
 @media(max-width:768px){

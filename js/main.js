@@ -1041,33 +1041,70 @@
     var sectionIds = items.map(function (it) { return it.getAttribute("data-section"); });
     var sections = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
 
-    // Show/hide based on scroll depth (hide in hero top, show after scrolling a bit)
+    // All page sections/elements for background detection (order matters)
+    var allSections = Array.prototype.slice.call(
+      document.querySelectorAll("#home, #intro, #divider, #amenities, #rooms, #reviews, #location, #instagram, #book, #sister-hotel, #contact")
+    );
+    // Which sections have dark backgrounds
+    var darkIds = ["home", "divider", "amenities", "rooms", "reviews", "book", "contact"];
+
+    function isDarkSection(id) {
+      return darkIds.indexOf(id) >= 0;
+    }
+
+    // Show/hide based on scroll depth
     function checkVisibility() {
       var y = window.pageYOffset;
       nav.classList.toggle("is-visible", y > 300);
     }
 
+    // Detect which section is behind the nav (at viewport vertical center)
+    var lastBg = "";
+    function detectBackground() {
+      var vpCenter = window.innerHeight / 2;
+      var found = null;
+      for (var i = allSections.length - 1; i >= 0; i--) {
+        var rect = allSections[i].getBoundingClientRect();
+        if (rect.top <= vpCenter && rect.bottom > vpCenter) {
+          found = allSections[i];
+          break;
+        }
+      }
+      var bg = found ? (isDarkSection(found.id) ? "dark" : "light") : "light";
+      if (bg !== lastBg) {
+        lastBg = bg;
+        nav.classList.toggle("secnav--on-dark", bg === "dark");
+        nav.classList.toggle("secnav--on-light", bg === "light");
+      }
+    }
+
     // Track active section with IntersectionObserver
-    var currentSection = "home";
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting && en.intersectionRatio >= 0.15) {
-          currentSection = en.target.id;
           items.forEach(function (it) {
-            it.classList.toggle("is-active", it.getAttribute("data-section") === currentSection);
+            it.classList.toggle("is-active", it.getAttribute("data-section") === en.target.id);
           });
-          // Adapt colors based on section background
-          var isDark = en.target.classList.contains("section--dark") || en.target.id === "divider";
-          nav.classList.toggle("secnav--on-dark", isDark);
-          nav.classList.toggle("secnav--on-light", !isDark);
         }
       });
     }, { threshold: [0.15, 0.5], rootMargin: "-20% 0px -20% 0px" });
 
     sections.forEach(function (sec) { observer.observe(sec); });
 
-    window.addEventListener("scroll", checkVisibility, { passive: true });
+    var scrollTicking = false;
+    function onScroll() {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(function () {
+          checkVisibility();
+          detectBackground();
+          scrollTicking = false;
+        });
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
     checkVisibility();
+    detectBackground();
 
     // Mobile touch support: tap to open, tap again or tap outside to close
     var isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
@@ -1078,7 +1115,6 @@
           e.preventDefault();
           nav.classList.add("is-touch-open");
         } else if (link) {
-          // Let the click go through for navigation
           nav.classList.remove("is-touch-open");
         }
       });
