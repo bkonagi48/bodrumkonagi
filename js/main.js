@@ -1149,9 +1149,9 @@
         subdomains: "abcd"
       }).addTo(map);
 
-      var satLayer = leaflet.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-        maxZoom: 19,
-        attribution: "Tiles &copy; Esri"
+      var satLayer = leaflet.tileLayer("https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}", {
+        maxZoom: 20,
+        subdomains: ["mt0", "mt1", "mt2", "mt3"]
       });
 
       var toggleBtn = document.getElementById("mapSatToggle");
