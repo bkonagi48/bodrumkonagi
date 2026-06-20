@@ -47,7 +47,7 @@
       "loc.castle": "Bodrum Castle", "loc.bars": "Bars Street", "loc.bazaar": "Bodrum Bazaar",
       "loc.marina": "Marina", "loc.airport": "Milas-Bodrum Airport",
       "loc.min5": "5 min walk", "loc.min8": "8 min walk", "loc.min34": "~34 min drive",
-      "loc.directions": "Get directions", "loc.call": "Call us", "loc.openmap": "Open in Google Maps",
+      "loc.directions": "Get directions", "loc.call": "Call us", "loc.openmap": "Open in Google Maps", "loc.satellite": "Satellite", "loc.map": "Map",
       "cta.eyebrow": "Bodrum Konağı", "cta.l1": "More than a stay,", "cta.l2": "it's an experience.",
       "cta.support": "Plan an unforgettable stay in Bodrum today. Message us and we'll take care of the rest.",
       "cta.whatsapp": "Chat on WhatsApp", "cta.email": "Email us",
@@ -99,7 +99,7 @@
       "loc.castle": "Bodrum Kalesi", "loc.bars": "Barlar Sokağı", "loc.bazaar": "Bodrum Çarşı",
       "loc.marina": "Marina", "loc.airport": "Milas-Bodrum Havalimanı",
       "loc.min5": "5 dk yürüme", "loc.min8": "8 dk yürüme", "loc.min34": "~34 dk araç",
-      "loc.directions": "Yol tarifi al", "loc.call": "Bizi arayın", "loc.openmap": "Google Haritalar'da aç",
+      "loc.directions": "Yol tarifi al", "loc.call": "Bizi arayın", "loc.openmap": "Google Haritalar'da aç", "loc.satellite": "Uydu", "loc.map": "Harita",
       "cta.eyebrow": "Bodrum Konağı", "cta.l1": "Sadece bir konaklama değil,", "cta.l2": "gerçek bir deneyim.",
       "cta.support": "Bugün Bodrum'da unutulmaz bir konaklama planlayın. Bize yazın, gerisini biz halledelim.",
       "cta.whatsapp": "WhatsApp'tan yazın", "cta.email": "E-posta gönderin",
@@ -1143,10 +1143,36 @@
         gestureHandling: true,
         tap: false
       });
-      leaflet.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      var currentMapStyle = "street";
+      var streetLayer = leaflet.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
         maxZoom: 19,
         subdomains: "abcd"
       }).addTo(map);
+
+      var satLayer = leaflet.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+        maxZoom: 19,
+        attribution: "Tiles &copy; Esri"
+      });
+
+      var toggleBtn = document.getElementById("mapSatToggle");
+      var toggleLabel = document.getElementById("mapSatToggleLabel");
+      if (toggleBtn && toggleLabel) {
+        toggleBtn.addEventListener("click", function () {
+          if (currentMapStyle === "street") {
+            map.removeLayer(streetLayer);
+            map.addLayer(satLayer);
+            currentMapStyle = "satellite";
+            toggleLabel.setAttribute("data-i18n", "loc.map");
+            toggleLabel.textContent = t("loc.map");
+          } else {
+            map.removeLayer(satLayer);
+            map.addLayer(streetLayer);
+            currentMapStyle = "street";
+            toggleLabel.setAttribute("data-i18n", "loc.satellite");
+            toggleLabel.textContent = t("loc.satellite");
+          }
+        });
+      }
       var pinIcon = leaflet.divIcon({
         className: "leaflet-pin",
         html: '<svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">'

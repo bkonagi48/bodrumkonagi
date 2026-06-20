@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet" />
 
   <link rel="preload" as="image" href="assets/images/hero.jpg" />
-  <link rel="stylesheet" href="css/style.css?v=1.6" />
+  <link rel="stylesheet" href="css/style.css?v=1.7" />
 </head>
 <body>
 
@@ -314,6 +314,14 @@
 
       <div class="location__map reveal">
         <div id="leafletMap"></div>
+        <button id="mapSatToggle" class="location__maptoggle" data-cursor>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+          <span id="mapSatToggleLabel" data-i18n="loc.satellite">Satellite</span>
+        </button>
         <a class="location__maplink" href="https://maps.app.goo.gl/8yD62qpnV6L83afv5" target="_blank" rel="noopener" data-cursor>
           <svg class="icon"><use href="#i-pin"></use></svg><span data-i18n="loc.openmap">Open in Google Maps</span>
         </a>

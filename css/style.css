@@ -444,6 +444,11 @@ body.has-cursor .cursor{display:block}
   border:1px solid rgba(255,255,255,.16);display:inline-flex;align-items:center;gap:8px;transition:.3s var(--ease)}
 .location__maplink .icon{width:15px;height:15px}
 .location__maplink:hover{background:var(--bronze)}
+.location__maptoggle{position:absolute;left:14px;top:14px;right:auto;bottom:auto;z-index:3;font-family:var(--sans);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:rgba(16,35,32,.72);color:#fff;padding:10px 16px;border-radius:50px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.16);display:inline-flex;align-items:center;gap:8px;transition:.3s var(--ease);cursor:pointer}
+.location__maptoggle .icon{width:15px;height:15px}
+.location__maptoggle:hover{background:var(--bronze)}
 
 /* =========================== CTA =========================== */
 .cta{position:relative;overflow:hidden;text-align:center}
