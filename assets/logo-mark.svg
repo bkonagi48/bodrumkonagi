@@ -2,7 +2,7 @@
   <!-- sun -->
   <circle cx="60" cy="22" r="13" fill="#E08A3C"/>
   <!-- konak line-art (uses currentColor so it adapts to light/dark) -->
-  <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
     <!-- ground line -->
     <path d="M10 94 H110"/>
     <!-- left tower block -->
