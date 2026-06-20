@@ -111,7 +111,7 @@ body.has-cursor, body.has-cursor *{cursor:none !important}
 .preloader__logo{margin:0 auto 18px;color:var(--cream);opacity:.96;animation:floaty 3s ease-in-out infinite}
 .preloader__name{font-family:var(--serif);font-size:30px;letter-spacing:.18em}
 .preloader__name span{font-family:var(--script);font-style:normal;color:var(--bronze-lt);letter-spacing:0;font-size:34px;margin-left:6px}
-.preloader__count{font-size:13px;letter-spacing:.2em;color:var(--muted-d);margin-top:14px}
+.preloader__count{font-size:13px;letter-spacing:.2em;color:var(--muted-d);margin-top:14px;font-weight:600}
 @keyframes floaty{50%{transform:translateY(-8px)}}
 
 /* =========================== CUSTOM CURSOR =========================== */
