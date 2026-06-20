@@ -1140,8 +1140,7 @@
         zoom: 16,
         zoomControl: false,
         attributionControl: false,
-        scrollWheelZoom: false,
-        dragging: !leaflet.Browser.mobile,
+        gestureHandling: true,
         tap: false
       });
       leaflet.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
@@ -1173,15 +1172,27 @@
       obs.observe(el);
     }
 
-    // Load Leaflet CSS + JS lazily so it never blocks the preloader
-    if (typeof window.L !== "undefined" && window.L.map) { startMap(); return; }
+    // Load Leaflet + Gesture Handling lazily so it never blocks the preloader
+    if (typeof window.L !== "undefined" && window.L.map && window.L.Map.prototype.gestureHandling) { startMap(); return; }
+
     var cssEl = document.createElement("link");
     cssEl.rel = "stylesheet";
     cssEl.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
     document.head.appendChild(cssEl);
+
+    var gestureCssEl = document.createElement("link");
+    gestureCssEl.rel = "stylesheet";
+    gestureCssEl.href = "https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css";
+    document.head.appendChild(gestureCssEl);
+
     var jsEl = document.createElement("script");
     jsEl.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-    jsEl.onload = startMap;
+    jsEl.onload = function () {
+      var gestureJsEl = document.createElement("script");
+      gestureJsEl.src = "https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.js";
+      gestureJsEl.onload = startMap;
+      document.head.appendChild(gestureJsEl);
+    };
     document.head.appendChild(jsEl);
   }
 
