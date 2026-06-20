@@ -1129,57 +1129,58 @@
   /* -------------------------------------------------------- leaflet map */
   function initLeafletMap() {
     var el = document.getElementById("leafletMap");
-    if (!el || typeof L === "undefined") return;
+    if (!el) return;
 
-    var lat = 37.03445;
-    var lng = 27.42915;
+    function startMap() {
+      var lat = 37.03445, lng = 27.42915;
+      var map = L.map(el, {
+        center: [lat, lng],
+        zoom: 16,
+        zoomControl: false,
+        attributionControl: false,
+        scrollWheelZoom: false,
+        dragging: !L.Browser.mobile,
+        tap: false
+      });
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+        maxZoom: 19,
+        subdomains: "abcd"
+      }).addTo(map);
+      var pinIcon = L.divIcon({
+        className: "leaflet-pin",
+        html: '<svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">'
+          + '<path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.268 21.732 0 14 0z" fill="#E04040"/>'
+          + '<circle cx="14" cy="14" r="6" fill="#8B1A1A"/>'
+          + '<circle cx="14" cy="14" r="4.5" fill="#E04040"/>'
+          + '</svg>',
+        iconSize: [28, 40],
+        iconAnchor: [14, 40],
+        popupAnchor: [0, -40]
+      });
+      var marker = L.marker([lat, lng], { icon: pinIcon }).addTo(map);
+      marker.bindPopup(
+        '<div style="font-family:var(--sans);text-align:center;padding:4px 2px">'
+        + '<strong style="font-size:14px">Bodrum Konağı</strong><br>'
+        + '<span style="font-size:12px;color:#666">Çarşı Mah. 1030 Sok. No:14<br>48400 Bodrum / Muğla</span>'
+        + '</div>',
+        { closeButton: false, offset: [0, -8] }
+      );
+      var obs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { map.invalidateSize(); obs.disconnect(); }
+      });
+      obs.observe(el);
+    }
 
-    var map = L.map(el, {
-      center: [lat, lng],
-      zoom: 16,
-      zoomControl: false,
-      attributionControl: false,
-      scrollWheelZoom: false,
-      dragging: !L.Browser.mobile,
-      tap: false
-    });
-
-    // CartoDB Voyager tiles — very similar to Google Maps look
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-      maxZoom: 19,
-      subdomains: "abcd"
-    }).addTo(map);
-
-    // Custom red pin marker (Google Maps style)
-    var pinIcon = L.divIcon({
-      className: "leaflet-pin",
-      html: '<svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">'
-        + '<path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.268 21.732 0 14 0z" fill="#E04040"/>'
-        + '<circle cx="14" cy="14" r="6" fill="#8B1A1A"/>'
-        + '<circle cx="14" cy="14" r="4.5" fill="#E04040"/>'
-        + '</svg>',
-      iconSize: [28, 40],
-      iconAnchor: [14, 40],
-      popupAnchor: [0, -40]
-    });
-
-    var marker = L.marker([lat, lng], { icon: pinIcon }).addTo(map);
-    marker.bindPopup(
-      '<div style="font-family:var(--sans);text-align:center;padding:4px 2px">'
-      + '<strong style="font-size:14px">Bodrum Konağı</strong><br>'
-      + '<span style="font-size:12px;color:#666">Çarşı Mah. 1030 Sok. No:14<br>48400 Bodrum / Muğla</span>'
-      + '</div>',
-      { closeButton: false, offset: [0, -8] }
-    );
-
-    // Invalidate size when section becomes visible (lazy reveal)
-    var observer = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        map.invalidateSize();
-        observer.disconnect();
-      }
-    });
-    observer.observe(el);
+    // Load Leaflet CSS + JS lazily so it never blocks the preloader
+    if (typeof L !== "undefined") { startMap(); return; }
+    var cssEl = document.createElement("link");
+    cssEl.rel = "stylesheet";
+    cssEl.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+    document.head.appendChild(cssEl);
+    var jsEl = document.createElement("script");
+    jsEl.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    jsEl.onload = startMap;
+    document.head.appendChild(jsEl);
   }
 
   /* ---------------------------------------------------------------- init */
