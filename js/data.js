@@ -354,7 +354,7 @@ window.SITE_DATA = {
       },
       "avatar": "assets/images/guest-1.jpg",
       "text": {
-        "en": "We stayed here with my wife in early March and it truly became one of those places where we said \"so glad we chose it.\" Right in the centre of Bodrum — walking distance to the bazaar, the marina and the bars street. The rooms were spotless, the breakfast generous and delicious, and the host genuinely attentive. We'll definitely be back.",
+        "en": "We stayed here with my wife in early March and it truly became one of those places where we said \"so glad we chose it.\" Located right in the centre of Bodrum, it is within easy walking distance of the bazaar, the marina, and the bars street. The rooms were spotless, the breakfast was generous and delicious, and the host was genuinely attentive. We'll definitely be back.",
         "tr": "Mart ayının başında eşimle konakladığımız bu otel, gerçekten \"iyi ki tercih etmişiz\" dediğimiz yerlerden biri oldu. Konumu Bodrum'un tam merkezinde; çarşıya, marinaya ve barlar sokağına yürüme mesafesinde. Odalar tertemiz, kahvaltı bol ve lezzetliydi, işletmeci çok ilgiliydi. Kesinlikle tekrar geleceğiz."
       }
     },
@@ -368,7 +368,7 @@ window.SITE_DATA = {
       },
       "avatar": "assets/images/guest-2.jpg",
       "text": {
-        "en": "We spent three nights here with my wife. The rooms are relatively small, but that is exactly the concept promised — it was no problem for us. The location is perfect, the staff warm and the breakfast a real pleasure. Recommended for anyone looking for a peaceful stay.",
+        "en": "We spent three nights here with my wife. The rooms are relatively small, but that is exactly the concept promised, so it was no problem for us. The location is perfect, the staff are warm, and the breakfast was a real pleasure. Highly recommended for anyone looking for a peaceful stay.",
         "tr": "Bodrum Konağı'nda eşimle 3 gece konakladık. Odalar nispeten küçük ama zaten vaat edilen konsept buydu, bizim için sorun olmadı. Konum mükemmel, personel güler yüzlü, kahvaltı çok keyifliydi. Huzurlu bir tatil arayanlara tavsiye ederim."
       }
     },
@@ -382,7 +382,7 @@ window.SITE_DATA = {
       },
       "avatar": "assets/images/guest-3.jpg",
       "text": {
-        "en": "Five minutes' walk to the marina and the bars street, right in the heart of central Bodrum — a quiet place to rest. The breakfast is a proper Aegean spread! The rooms are designed in wood, very stylish and clean. We'll come again.",
+        "en": "Just a five minutes' walk to the marina and the bars street, right in the heart of central Bodrum, yet it's a wonderfully quiet place to rest. The breakfast is a proper Aegean spread! The rooms are designed in wood, very stylish and clean. We'll definitely come again.",
         "tr": "Marina ve barlar sokağına 5 dk yürüme mesafesinde. Bodrum merkezin kalbinde, sessiz bir dinlenme oteli. Kahvaltısı tam kahvaltı! Odalar ahşap dizayn edilmiş, çok şık ve temiz. Tekrar geleceğiz."
       }
     },
