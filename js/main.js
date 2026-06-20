@@ -238,8 +238,7 @@
     var rooms = (DATA.ROOMS || []).filter(function (r) { return state.filter === "all" || r.type === state.filter; });
     wrap.innerHTML = rooms.map(function (r, i) {
       var n = ("0" + (i + 1)).slice(-2);
-      var amen = (r.amenities || []).slice(0, 6).map(function (k) { return AMEN_ICON[k] ? icon(AMEN_ICON[k]) : ""; }).join("");
-      amen += icon("i-nosmoking");
+      var amen = (r.amenities || []).map(function (k) { return AMEN_ICON[k] ? icon(AMEN_ICON[k]) : ""; }).join("");
 
       var sliderHTML = "";
       if (r.images && r.images.length > 1) {
