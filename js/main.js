@@ -60,7 +60,11 @@
       "instagram.following": "following",
       "ui.all": "All", "ui.from": "from", "ui.perNight": "/ night", "ui.reserve": "Reserve",
       "ui.guest": "Guest", "ui.guests": "Guests", "ui.anyType": "Any room", "ui.rooms": "rooms",
-      "ui.guestsCount": "guests · up to"
+      "ui.guestsCount": "guests · up to",
+      "sister.eyebrow": "Sister Property",
+      "sister.title": "A Peaceful Garden Escape",
+      "sister.desc": "Nestled among the lush citrus gardens of Bitez, Dolce Vita Luxury Bungalows offers a tranquil retreat with premium stone and wood cabins, an outdoor pool, and authentic Bodrum serenity.",
+      "sister.cta": "Explore Dolce Vita"
     },
     tr: {
       "nav.menu": "Menü", "nav.contact": "İletişim", "nav.book": "Rezervasyon",
@@ -108,7 +112,11 @@
       "instagram.following": "takip",
       "ui.all": "Tümü", "ui.from": "başlangıç", "ui.perNight": "/ gece", "ui.reserve": "Rezervasyon",
       "ui.guest": "Misafir", "ui.guests": "Misafir", "ui.anyType": "Tüm odalar", "ui.rooms": "oda",
-      "ui.guestsCount": "misafir · en fazla"
+      "ui.guestsCount": "misafir · en fazla",
+      "sister.eyebrow": "Kardeş Tesisimiz",
+      "sister.title": "Huzurlu Bir Bahçe Kaçamağı",
+      "sister.desc": "Bitez'in narenciye bahçeleri arasında yer alan Dolce Vita Luxury Bungalows, şık taş ve ahşap kulübeleri, açık yüzme havuzu ve doğayla iç içe sakin ortamıyla huzurlu bir Ege deneyimi sunuyor.",
+      "sister.cta": "Dolce Vita'yı Keşfedin"
     }
   };
   function t(key) { return (I18N[state.lang] && I18N[state.lang][key]) || (I18N.en[key]) || key; }

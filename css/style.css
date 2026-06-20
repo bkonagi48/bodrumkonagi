@@ -452,6 +452,81 @@ body.has-cursor .cursor{display:block}
 .cta__support{max-width:46ch;color:var(--cream-soft);font-size:17px}
 .cta__actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:14px}
 
+/* =========================== SISTER HOTEL =========================== */
+.sister{
+  background:var(--paper-2);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:clamp(64px,8vw,110px) 0;
+}
+.sister__inner{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:clamp(40px,6vw,90px);
+  align-items:center;
+}
+.sister__logo-side{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  background:#fff;
+  padding:50px 40px;
+  border-radius:24px;
+  border:1px solid var(--line);
+  box-shadow:0 15px 45px -20px rgba(35,35,31,0.12);
+  transition:transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.sister__logo-side:hover{
+  transform:translateY(-4px);
+  box-shadow:0 25px 55px -25px rgba(35,35,31,0.18);
+}
+.sister__svg{
+  margin-bottom:24px;
+  max-width:100%;
+}
+.sister__brand-text{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.sister__brand-title{
+  font-family:var(--sans);
+  font-size:28px;
+  font-weight:400;
+  letter-spacing:0.18em;
+  color:#23231F;
+  margin:0;
+  padding-left:0.18em;
+}
+.sister__brand-subtitle{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:0.38em;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+  padding-left:0.38em;
+}
+.sister__content{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.sister__content .section-title{
+  margin:20px 0 18px;
+}
+.sister__desc{
+  color:var(--ink-soft);
+  font-size:16px;
+  line-height:1.7;
+  margin-bottom:30px;
+  max-width:48ch;
+}
+.sister__actions{
+  display:flex;
+}
+
 /* =========================== FOOTER =========================== */
 .footer{background:#0C1B19;color:var(--cream);padding:clamp(64px,8vw,110px) 0 34px}
 .footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1.2fr 1fr;gap:48px}
@@ -682,6 +757,9 @@ body.has-cursor .cursor{display:block}
   .gallery__item:first-child{grid-row:span 1;aspect-ratio:3/4}
   .footer__grid{grid-template-columns:1fr 1fr}
   .footer__brand{grid-column:1/-1}
+  .sister__inner{grid-template-columns:1fr;gap:50px}
+  .sister__content{align-items:center;text-align:center}
+  .sister__actions{justify-content:center}
 }
 @media (max-width:860px){
   .booking{position:static;transform:none;width:100%;grid-template-columns:1fr 1fr;margin-top:30px}
