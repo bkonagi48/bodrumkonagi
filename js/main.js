@@ -127,7 +127,7 @@
   /* amenity key -> icon symbol */
   var AMEN_ICON = {
     wifi: "i-wifi", breakfast: "i-coffee", ac: "i-wind", safe: "i-lock",
-    soundproof: "i-soundproof", nonsmoking: "i-ban", tv: "i-tv", minibar: "i-wine",
+    soundproof: "i-soundproof", nonsmoking: "i-nosmoking", tv: "i-tv", minibar: "i-wine",
     balcony: "i-sun", seaview: "i-waves", familyfriendly: "i-users"
   };
   function icon(id, cls) { return '<svg class="icon ' + (cls || "") + '"><use href="#' + id + '"></use></svg>'; }
@@ -239,6 +239,7 @@
     wrap.innerHTML = rooms.map(function (r, i) {
       var n = ("0" + (i + 1)).slice(-2);
       var amen = (r.amenities || []).slice(0, 6).map(function (k) { return AMEN_ICON[k] ? icon(AMEN_ICON[k]) : ""; }).join("");
+      amen += icon("i-nosmoking");
 
       var sliderHTML = "";
       if (r.images && r.images.length > 1) {
