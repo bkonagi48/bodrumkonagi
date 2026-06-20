@@ -23,7 +23,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet" />
 
   <link rel="preload" as="image" href="assets/images/hero.jpg" />
-  <link rel="stylesheet" href="css/style.css?v=1.5" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="css/style.css?v=1.6" />
 </head>
 <body>
 
@@ -313,10 +314,7 @@
       </div>
 
       <div class="location__map reveal">
-        <iframe
-          title="Bodrum Konağı on the map"
-          src="https://www.google.com/maps?q=Bodrum%20Kona%C4%9F%C4%B1%201030%20Sk%20No%2014%2048400%20Bodrum&output=embed&t=m"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div id="leafletMap"></div>
         <a class="location__maplink" href="https://www.google.com/maps?q=Bodrum+Kona%C4%9F%C4%B1+1030+Sk+No+14+48400+Bodrum" target="_blank" rel="noopener" data-cursor>
           <svg class="icon"><use href="#i-pin"></use></svg><span data-i18n="loc.openmap">Open in Google Maps</span>
         </a>
@@ -523,6 +521,7 @@
 
 <button class="to-top" id="toTop" data-cursor aria-label="Back to top"><svg class="icon"><use href="#i-arrow-right"></use></svg></button>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="js/data.js"></script>
 <script src="js/main.js?v=1.2" defer></script>
 
